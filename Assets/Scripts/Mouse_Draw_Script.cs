@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 
@@ -20,6 +21,7 @@ public class Mouse_Draw_Script : MonoBehaviour
 
     private void Update()
     {
+
         if(Input.GetMouseButton(0))
         {
             Vector3 currentPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -47,4 +49,5 @@ public class Mouse_Draw_Script : MonoBehaviour
             lineRenderer.positionCount = 0;
         }
     }
+
 }
