@@ -42,6 +42,7 @@ public class Mouse_Draw_Script : MonoBehaviour
 
                 previousPos = currentPos;
             }
+
         }
 
         if(Input.GetMouseButtonUp(0))
