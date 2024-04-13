@@ -4,8 +4,9 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Hint/MoveFowards
+  - Hint/MoveForwards
   - Hint/MoveBackwards
+  - MF
   layers:
   - Default
   - TransparentFX

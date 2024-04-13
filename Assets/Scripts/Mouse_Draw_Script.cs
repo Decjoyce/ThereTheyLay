@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.WSA;
 
 public class Mouse_Draw_Script : MonoBehaviour
 {
     private LineRenderer lineRenderer;
+    private LineRenderer fakeLineRenderer;
     private EdgeCollider2D edgeCollider;
     private Vector3 previousPos;
 
@@ -16,7 +18,7 @@ public class Mouse_Draw_Script : MonoBehaviour
 
     [SerializeField] private float minDistance = 0.1f;
     [SerializeField, Range(1,6)] private float width;
-
+    [SerializeField] Transform drawWindow;
     [SerializeField] Vector2 drawWindowPos, drawWindowScale;
 
     bool isDrawing;
@@ -28,6 +30,7 @@ public class Mouse_Draw_Script : MonoBehaviour
         //lineRenderer = GetComponent<LineRenderer>();
         //lineRenderer.positionCount = 1;
         previousPos = transform.position;
+        drawWindow.localScale = drawWindowScale;
         //lineRenderer.startWidth = lineRenderer.endWidth = width;
     }
 
@@ -39,11 +42,15 @@ public class Mouse_Draw_Script : MonoBehaviour
             if (!isDrawing)
             {
                 GameObject newLine = Instantiate(pens[currentPenID], transform.position, Quaternion.identity, drawHolders[currentPenID]);
-                lineRenderer = newLine.GetComponent<LineRenderer>();
+                LineRenderer[] renderers = newLine.GetComponentsInChildren<LineRenderer>();
+                lineRenderer = renderers[0];
+                fakeLineRenderer = renderers[1];
                 edgeCollider = newLine.GetComponent<EdgeCollider2D>();
                 lineRenderer.positionCount = 1;
+                fakeLineRenderer.positionCount = 1;
                 previousPos = transform.position;
                 lineRenderer.startWidth = lineRenderer.endWidth = width;
+                fakeLineRenderer.startWidth = lineRenderer.endWidth = width;
             }
                 
 
@@ -57,13 +64,16 @@ public class Mouse_Draw_Script : MonoBehaviour
                 if(previousPos == transform.position)
                 {
                     lineRenderer.SetPosition(0, currentPos);
+                    fakeLineRenderer.SetPosition(0, currentPos);
                     edgeCollider.points[0] = currentPos;
                 }
 
                 else
                 {
                     lineRenderer.positionCount++;
+                    fakeLineRenderer.positionCount++;
                     lineRenderer.SetPosition(lineRenderer.positionCount - 1, currentPos);
+                    fakeLineRenderer.SetPosition(fakeLineRenderer.positionCount - 1, currentPos);
                     edgeCollider.points[edgeCollider.pointCount - 1] = currentPos;
                 }
                 previousPos = currentPos;
@@ -74,9 +84,11 @@ public class Mouse_Draw_Script : MonoBehaviour
         {
             if (isDrawing)
             {
+                fakeLineRenderer.Simplify(0.1f);
                 SetEdgeCollider();
                 isDrawing = false;
                 lineRenderer = null;
+                fakeLineRenderer = null;
                 edgeCollider = null;
             }
         }
@@ -90,11 +102,10 @@ public class Mouse_Draw_Script : MonoBehaviour
 
     void SetEdgeCollider()
     {
-        //lineRenderer.Simplify(0.5f);
-        edgeCollider.edgeRadius = width/2;
-        for (int i = 0; i < lineRenderer.positionCount; i++)
+        edgeCollider.edgeRadius = width/2f;
+        for (int i = 0; i < fakeLineRenderer.positionCount; i++)
         {
-            Vector3 convertedPos = lineRenderer.GetPosition(i);
+            Vector3 convertedPos = fakeLineRenderer.GetPosition(i);
             shit.Add(new Vector2(convertedPos.x, convertedPos.y));
         }
         edgeCollider.SetPoints(shit);
@@ -114,12 +125,18 @@ public class Mouse_Draw_Script : MonoBehaviour
 
     public void ClearDrawing(string id)
     {
-        Destroy(drawHolders[IDCHECKER(id)]);
+        foreach (Transform drawing in drawHolders[IDCHECKER(id)])
+        {
+            Destroy(drawing.gameObject);
+        }
     }
 
     public void ClearDrawingUsingID(int id)
     {
-
+        foreach (Transform drawing in drawHolders[id])
+        {
+            Destroy(drawing.gameObject);
+        }
     }
 
     public void SwitchColour(string id)
