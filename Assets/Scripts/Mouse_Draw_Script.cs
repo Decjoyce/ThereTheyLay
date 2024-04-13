@@ -47,7 +47,7 @@ public class Mouse_Draw_Script : MonoBehaviour
 
         if(Input.GetMouseButtonUp(0))
         {
-            lineRenderer.positionCount = 0;
+            //lineRenderer.positionCount = 0;
         }
     }
 
