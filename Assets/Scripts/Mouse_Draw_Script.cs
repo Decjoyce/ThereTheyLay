@@ -65,7 +65,7 @@ public class Mouse_Draw_Script : MonoBehaviour
                 {
                     lineRenderer.SetPosition(0, currentPos);
                     fakeLineRenderer.SetPosition(0, currentPos);
-                    edgeCollider.points[0] = currentPos;
+                    //edgeCollider.points[0] = currentPos;
                 }
 
                 else
@@ -74,7 +74,7 @@ public class Mouse_Draw_Script : MonoBehaviour
                     fakeLineRenderer.positionCount++;
                     lineRenderer.SetPosition(lineRenderer.positionCount - 1, currentPos);
                     fakeLineRenderer.SetPosition(fakeLineRenderer.positionCount - 1, currentPos);
-                    edgeCollider.points[edgeCollider.pointCount - 1] = currentPos;
+                    //edgeCollider.points[edgeCollider.pointCount - 1] = currentPos;
                 }
                 previousPos = currentPos;
             }
@@ -96,7 +96,6 @@ public class Mouse_Draw_Script : MonoBehaviour
 
     bool CheckIfInDrawArea(Vector2 mousePosition)
     {
-        //if((mousePosition.x > )
         return mousePosition.x > -drawWindowScale.x / 2 && mousePosition.x < drawWindowScale.x / 2 && mousePosition.y > -drawWindowScale.y / 2 && mousePosition.y < drawWindowScale.y / 2;
     }
 
