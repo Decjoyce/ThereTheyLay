@@ -5,13 +5,14 @@ using Unity.VisualScripting;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class PlayerCharacter : MonoBehaviour
+public class InstructionReceiver : MonoBehaviour
 {
     Rigidbody2D rb;
     [SerializeField] float moveSpeed;
 
     bool isActive;
-    public PlayerStates state;
+    public bool inst_MoveForward;
+    public bool inst_MoveBackwards;
 
     // Start is called before the first frame update
     void Start()
@@ -33,13 +34,15 @@ public class PlayerCharacter : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (isActive && state == PlayerStates.move_forwards)
+        if (isActive && inst_MoveForward)
         {
-            rb.AddForce(Vector2.right * moveSpeed * Time.fixedDeltaTime, ForceMode2D.Impulse);
+            //rb.AddForce(Vector2.right * moveSpeed * Time.fixedDeltaTime, ForceMode2D.Impulse);
+            rb.velocity = Vector2.right * moveSpeed * Time.fixedDeltaTime;
         }
-        if (isActive && state == PlayerStates.move_backwards)
+        if (isActive && inst_MoveBackwards)
         {
-            rb.AddForce(-Vector2.right * moveSpeed * Time.fixedDeltaTime, ForceMode2D.Impulse);
+            //rb.AddForce(-Vector2.right * moveSpeed * Time.fixedDeltaTime, ForceMode2D.Impulse);
+            rb.velocity = -Vector2.right * moveSpeed * Time.fixedDeltaTime;
         }
     }
 
@@ -47,11 +50,11 @@ public class PlayerCharacter : MonoBehaviour
     {
         if (isActive && collision.gameObject.CompareTag("Hint/MoveForwards"))
         {
-            state = PlayerStates.move_forwards;
+            inst_MoveForward = true;
         }
         if (isActive && collision.gameObject.CompareTag("Hint/MoveBackwards"))
         {
-            state = PlayerStates.move_backwards;
+            inst_MoveBackwards = true;
         }
     }
 
@@ -59,11 +62,11 @@ public class PlayerCharacter : MonoBehaviour
     {
         if (isActive && collision.gameObject.CompareTag("Hint/MoveForwards"))
         {
-            state = PlayerStates.idle;
+            inst_MoveForward = false;
         }
         if (isActive && collision.gameObject.CompareTag("Hint/MoveBackwards"))
         {
-            state = PlayerStates.idle;
+            inst_MoveBackwards = false;
         }
     }
 
@@ -72,11 +75,4 @@ public class PlayerCharacter : MonoBehaviour
 
     }
 
-}
-
-public enum PlayerStates
-{
-    idle,
-    move_forwards,
-    move_backwards,
 }
