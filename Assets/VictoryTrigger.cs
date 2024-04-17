@@ -13,6 +13,8 @@ public class VictoryTrigger : MonoBehaviour
         {
             Debug.Log("VICTORY");
             victoryText.gameObject.SetActive(true);
+            collision.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
+            GameManager.instance.BeginWin();
         }
     }
 }

@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -19,6 +21,10 @@ public class GameManager : MonoBehaviour
 
     #endregion
 
+    public TextMeshProUGUI texty;
+
+    public static int currentLevel;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -28,6 +34,21 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            texty.text = "Press R To Reset";
+        }
+    }
+
+    public void BeginWin()
+    {
+        StartCoroutine(Win());
+    }
+
+    IEnumerator Win()
+    {
+        yield return new WaitForSecondsRealtime(3f);
+        currentLevel++;
+        SceneManager.LoadScene(currentLevel);
     }
 }
