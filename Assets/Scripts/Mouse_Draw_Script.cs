@@ -12,8 +12,9 @@ public class Mouse_Draw_Script : MonoBehaviour
     [SerializeField] Transform mainDrawHolder;
     [SerializeField] Transform[] drawHolders;
 
-    [SerializeField] GameObject[] pens;
     int currentPenID;
+
+    [SerializeField] GameObject brush;
 
     [SerializeField] private float minDistance = 0.1f;
     [SerializeField, Range(1,6)] private float width;
@@ -24,10 +25,20 @@ public class Mouse_Draw_Script : MonoBehaviour
 
     List<Vector2> shit = new List<Vector2>();
 
+    [SerializeField] SO_InstructionColours instructionColours;
+    [SerializeField] SO_BrushStuff brushStuff;
+
+    public BrushType currentBrush;
+    public Material currentMaterial;
+    public InstructionType currentInstruction;
+    public Gradient currentColour;
+
     private void Start()
     {
         //lineRenderer = GetComponent<LineRenderer>();
         //lineRenderer.positionCount = 1;
+        SwitchColourUsingID(0);
+        SwitchBrushUsingID(0);
         previousPos = transform.position;
         drawWindow.localScale = drawWindowScale;
         //lineRenderer.startWidth = lineRenderer.endWidth = width;
@@ -40,8 +51,12 @@ public class Mouse_Draw_Script : MonoBehaviour
         {
             if (!isDrawing)
             {
-                GameObject newLine = Instantiate(pens[currentPenID], transform.position, Quaternion.identity, drawHolders[currentPenID]);
+                GameObject newLine = Instantiate(brush, transform.position, Quaternion.identity, drawHolders[currentPenID]);
+                InstructionGiver giver = newLine.GetComponent<InstructionGiver>();
+                giver.brushType = currentBrush;
+                giver.instructionType = currentInstruction;
                 LineRenderer[] renderers = newLine.GetComponentsInChildren<LineRenderer>();
+                renderers[0].colorGradient = currentColour;
                 lineRenderer = renderers[0];
                 fakeLineRenderer = renderers[1];
                 edgeCollider = newLine.GetComponent<EdgeCollider2D>();
@@ -137,20 +152,93 @@ public class Mouse_Draw_Script : MonoBehaviour
         }
     }
 
+    public void SwitchBrush(string id)
+    {
+        switch (id)
+        {
+            case "PEN":
+                currentBrush = BrushType.pen;
+                currentMaterial = brushStuff.pen_material;
+                break;
+            case "OIL":
+                currentBrush = BrushType.oil;
+                currentMaterial = brushStuff.oil_material;
+                break;
+            case "AIRBRUSH":
+                currentBrush = BrushType.airbrush;
+                currentMaterial = brushStuff.airbrush_material;
+                break;
+            default:
+                Debug.LogError("INVALID PEN ID");
+                break;
+        }
+    }
+
+    public void SwitchBrushUsingID(int id)
+    {
+        switch (id)
+        {
+            case 0:
+                currentBrush = BrushType.pen;
+                currentMaterial = brushStuff.pen_material;
+                break;
+            case 1:
+                currentBrush = BrushType.oil;
+                currentMaterial = brushStuff.oil_material;
+                break;
+            case 2:
+                currentBrush = BrushType.airbrush;
+                currentMaterial = brushStuff.airbrush_material;
+                break;
+            default:
+                Debug.LogError("INVALID PEN ID");
+                break;
+        }
+    }
+
     public void SwitchColour(string id)
     {
-        currentPenID = IDCHECKER(id);
+        switch (id)
+        {
+            case "MOVE_FOWARD":
+                currentInstruction = InstructionType.move_forward;
+                currentColour = instructionColours.move_forward;
+                break;
+            case "MOVE_BACKWARD":
+                currentInstruction = InstructionType.move_backward;
+                currentColour = instructionColours.move_backward;
+                break;
+            case "MOVE_JUMP":
+                currentInstruction = InstructionType.move_jump;
+                currentColour = instructionColours.move_jump;
+                break;
+            default:
+                Debug.LogError("INVALID PEN ID");
+                break;
+        }
     }
 
     public void SwitchColourUsingID(int id)
     {
-        if(id >= pens.Length)
-        {
-            Debug.LogError("YOU STUPID IDIOT!!!! THIS PEN DOES NOT EXIST!!!!!");
-            return;
-        }
 
-        currentPenID = id;
+        switch (id)
+        {
+            case 0:
+                currentInstruction = InstructionType.move_forward;
+                currentColour = instructionColours.move_forward;
+                break;
+            case 1:
+                currentInstruction = InstructionType.move_backward;
+                currentColour = instructionColours.move_backward;
+                break;
+            case 2:
+                currentInstruction = InstructionType.move_jump;
+                currentColour = instructionColours.move_jump;
+                break;
+            default:
+                Debug.LogError("INVALID PEN ID");
+                break;
+        }
     }
 
     int IDCHECKER(string id)
@@ -161,6 +249,8 @@ public class Mouse_Draw_Script : MonoBehaviour
                 return 0;
             case "MOVE_BACKWARD":
                 return 1;
+            case "MOVE_JUMP":
+                return 2;
             default:
                 Debug.LogError("INVALID PEN ID");
                 return 0;

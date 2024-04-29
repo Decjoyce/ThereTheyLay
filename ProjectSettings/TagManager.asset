@@ -7,6 +7,7 @@ TagManager:
   - Hint/MoveForwards
   - Hint/MoveBackwards
   - Hint/MoveJump
+  - Instruction
   layers:
   - Default
   - TransparentFX

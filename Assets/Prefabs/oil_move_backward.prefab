@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 7637311491192941613}
   - component: {fileID: 5298109066585268602}
   - component: {fileID: 2276696402755945866}
-  - component: {fileID: 4163566237801623163}
+  - component: {fileID: 7361475579168756798}
   m_Layer: 0
-  m_Name: pen_move_f
+  m_Name: oil_move_backward
   m_TagString: Instruction
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -99,8 +99,8 @@ LineRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 0, g: 1, b: 0, a: 1}
-      key1: {r: 0, g: 1, b: 0, a: 1}
+      key0: {r: 1, g: 0.6900129, b: 0, a: 1}
+      key1: {r: 1, g: 0.6901961, b: 0, a: 1}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
@@ -124,7 +124,7 @@ LineRenderer:
       atime6: 0
       atime7: 0
       m_Mode: 0
-      m_ColorSpace: -1
+      m_ColorSpace: 0
       m_NumColorKeys: 2
       m_NumAlphaKeys: 2
     numCornerVertices: 0
@@ -179,7 +179,7 @@ EdgeCollider2D:
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
   m_UseAdjacentEndPoint: 0
---- !u!114 &4163566237801623163
+--- !u!114 &7361475579168756798
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -191,12 +191,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbabeea852c442e4aa8fb893b8d15116, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  brush_pen: 1
-  brush_airbrush: 0
-  brush_oil: 0
-  give_MoveFoward: 1
-  give_MoveBack: 0
-  give_MoveJump: 0
+  brushType: 2
+  instructionType: 1
 --- !u!1 &7454808628027787799
 GameObject:
   m_ObjectHideFlags: 0

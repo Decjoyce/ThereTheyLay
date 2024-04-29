@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2276696402755945866}
   - component: {fileID: 4163566237801623163}
   m_Layer: 0
-  m_Name: pen_move_f
+  m_Name: brush_prefab
   m_TagString: Instruction
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

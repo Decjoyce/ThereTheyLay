@@ -704,14 +704,47 @@ MonoBehaviour:
   drawHolders:
   - {fileID: 291833311}
   - {fileID: 734599330}
-  pens:
-  - {fileID: 4821558775899782511, guid: f56b6ed2a1c80884baaf8aca5bfb1a67, type: 3}
-  - {fileID: 4821558775899782511, guid: 7e1538eb7b728e648a0b64b4d83394be, type: 3}
+  brush: {fileID: 4821558775899782511, guid: 55c07866d987a184793e9d5e8e3152d4, type: 3}
   minDistance: 0.1
   width: 1
   drawWindow: {fileID: 1094674865}
   drawWindowPos: {x: 0, y: 0}
   drawWindowScale: {x: 20, y: 10}
+  instructionColours: {fileID: 11400000, guid: 70e24a03a4e369e4aafb0efa027afc77, type: 2}
+  brushStuff: {fileID: 11400000, guid: 2f6659a3014499341ac90f94ab66bfef, type: 2}
+  currentBrush: 0
+  currentMaterial: {fileID: 0}
+  currentInstruction: 0
+  currentColour:
+    serializedVersion: 2
+    key0: {r: 1, g: 1, b: 1, a: 1}
+    key1: {r: 1, g: 1, b: 1, a: 1}
+    key2: {r: 0, g: 0, b: 0, a: 0}
+    key3: {r: 0, g: 0, b: 0, a: 0}
+    key4: {r: 0, g: 0, b: 0, a: 0}
+    key5: {r: 0, g: 0, b: 0, a: 0}
+    key6: {r: 0, g: 0, b: 0, a: 0}
+    key7: {r: 0, g: 0, b: 0, a: 0}
+    ctime0: 0
+    ctime1: 65535
+    ctime2: 0
+    ctime3: 0
+    ctime4: 0
+    ctime5: 0
+    ctime6: 0
+    ctime7: 0
+    atime0: 0
+    atime1: 65535
+    atime2: 0
+    atime3: 0
+    atime4: 0
+    atime5: 0
+    atime6: 0
+    atime7: 0
+    m_Mode: 0
+    m_ColorSpace: -1
+    m_NumColorKeys: 2
+    m_NumAlphaKeys: 2
 --- !u!4 &168604867
 Transform:
   m_ObjectHideFlags: 0
@@ -1645,8 +1678,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 100
+  jumpForce: 5
+  airbrush_slowness: 0
+  oil_slippiness: 0
+  maxVelocity: 5
   inst_MoveForward: 0
   inst_MoveBackwards: 0
+  inst_MoveJump: 0
+  affect_oil: 0
+  affect_airbrush: 0
 --- !u!70 &534242228
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -3037,8 +3077,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 100
+  jumpForce: 5
+  airbrush_slowness: 0
+  oil_slippiness: 0
+  maxVelocity: 5
   inst_MoveForward: 0
   inst_MoveBackwards: 0
+  inst_MoveJump: 0
+  affect_oil: 0
+  affect_airbrush: 0
 --- !u!50 &1801145769
 Rigidbody2D:
   serializedVersion: 4

@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 7637311491192941613}
   - component: {fileID: 5298109066585268602}
   - component: {fileID: 2276696402755945866}
+  - component: {fileID: 5599655939764883095}
   m_Layer: 0
   m_Name: pen_move_b
-  m_TagString: Hint/MoveBackwards
+  m_TagString: Instruction
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -146,7 +147,7 @@ EdgeCollider2D:
   m_GameObject: {fileID: 4821558775899782511}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: e36226c2fde6a244ba1e9038419b9120, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -178,6 +179,20 @@ EdgeCollider2D:
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
   m_UseAdjacentEndPoint: 0
+--- !u!114 &5599655939764883095
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4821558775899782511}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbabeea852c442e4aa8fb893b8d15116, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  brushType: 0
+  instructionType: 1
 --- !u!1 &7269320143342995447
 GameObject:
   m_ObjectHideFlags: 0
