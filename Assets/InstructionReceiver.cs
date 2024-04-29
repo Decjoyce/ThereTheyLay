@@ -9,10 +9,12 @@ public class InstructionReceiver : MonoBehaviour
 {
     Rigidbody2D rb;
     [SerializeField] float moveSpeed;
+    [SerializeField] float jumpForce = 5f;
 
     bool isActive;
     public bool inst_MoveForward;
     public bool inst_MoveBackwards;
+    public bool inst_MoveJump;
 
     // Start is called before the first frame update
     void Start()
@@ -37,12 +39,16 @@ public class InstructionReceiver : MonoBehaviour
         if (isActive && inst_MoveForward)
         {
             //rb.AddForce(Vector2.right * moveSpeed * Time.fixedDeltaTime, ForceMode2D.Impulse);
-            rb.velocity = Vector2.right * moveSpeed * Time.fixedDeltaTime;
+            rb.velocity = new(moveSpeed * Time.fixedDeltaTime, rb.velocity.y);
         }
         if (isActive && inst_MoveBackwards)
         {
             //rb.AddForce(-Vector2.right * moveSpeed * Time.fixedDeltaTime, ForceMode2D.Impulse);
-            rb.velocity = -Vector2.right * moveSpeed * Time.fixedDeltaTime;
+            rb.velocity = new(-moveSpeed * Time.fixedDeltaTime, rb.velocity.y);
+        }
+        if(isActive && inst_MoveJump)
+        {
+            rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
         }
     }
 
@@ -56,6 +62,10 @@ public class InstructionReceiver : MonoBehaviour
         {
             inst_MoveBackwards = true;
         }
+        if (isActive && collision.gameObject.CompareTag("Hint/MoveJump"))
+        {
+            inst_MoveJump = true;
+        }
     }
 
     private void OnCollisionExit2D(Collision2D collision)
@@ -67,6 +77,10 @@ public class InstructionReceiver : MonoBehaviour
         if (isActive && collision.gameObject.CompareTag("Hint/MoveBackwards"))
         {
             inst_MoveBackwards = false;
+        }
+        if (isActive && collision.gameObject.CompareTag("Hint/MoveJump"))
+        {
+            inst_MoveJump = false;
         }
     }
 
