@@ -51,16 +51,16 @@ public class InstructionReceiver : MonoBehaviour
     {
         if (isActive && inst_MoveForward)
         {
-            rb.AddForce(Vector2.right * moveSpeed * Time.fixedDeltaTime, ForceMode2D.Impulse);
-            if (rb.velocity.x >= currentMaxVelocity)
-                rb.velocity = new(currentMaxVelocity, rb.velocity.y);
+            rb.AddForce(Vector2.right * moveSpeed * Time.fixedDeltaTime * current_airbrush_slowness, ForceMode2D.Impulse);
+            if (rb.velocity.x >= currentMaxVelocity * current_airbrush_slowness)
+                rb.velocity = new(currentMaxVelocity * current_airbrush_slowness, rb.velocity.y);
             //rb.velocity = new(moveSpeed * Time.fixedDeltaTime * current_oil_slippiness * current_airbrush_slowness, rb.velocity.y);
         }
         if (isActive && inst_MoveBackwards)
         {
-            rb.AddForce(-Vector2.right * moveSpeed * Time.fixedDeltaTime, ForceMode2D.Impulse);
-            if (rb.velocity.x <= -currentMaxVelocity)
-                rb.velocity = new(-currentMaxVelocity, rb.velocity.y);
+            rb.AddForce(-Vector2.right * moveSpeed * Time.fixedDeltaTime * current_airbrush_slowness, ForceMode2D.Impulse);
+            if (rb.velocity.x <= -currentMaxVelocity * current_airbrush_slowness)
+                rb.velocity = new(-currentMaxVelocity * current_airbrush_slowness, rb.velocity.y);
             //rb.velocity = new(-moveSpeed * Time.fixedDeltaTime * current_oil_slippiness * current_airbrush_slowness, rb.velocity.y);
         }
         if(isActive && inst_MoveJump)
@@ -80,19 +80,16 @@ public class InstructionReceiver : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (isActive && collision.gameObject.CompareTag("Hint/MoveForwards"))
-        {
-            inst_MoveForward = true;
-        }
-        if (isActive && collision.gameObject.CompareTag("Hint/MoveBackwards"))
-        {
-            inst_MoveBackwards = true;
-        }
-        if (isActive && collision.gameObject.CompareTag("Hint/MoveJump"))
-        {
-            inst_MoveJump = true;
-        }
         if(isActive && collision.gameObject.CompareTag("Instruction"))
+        {
+            InstructionGiver giver = collision.gameObject.GetComponent<InstructionGiver>();
+            ReceiveInstruction(giver, true);
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (isActive && collision.gameObject.CompareTag("Instruction"))
         {
             InstructionGiver giver = collision.gameObject.GetComponent<InstructionGiver>();
             ReceiveInstruction(giver, true);
@@ -101,18 +98,15 @@ public class InstructionReceiver : MonoBehaviour
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        if (isActive && collision.gameObject.CompareTag("Hint/MoveForwards"))
+        if (isActive && collision.gameObject.CompareTag("Instruction"))
         {
-            inst_MoveForward = false;
+            InstructionGiver giver = collision.gameObject.GetComponent<InstructionGiver>();
+            ReceiveInstruction(giver, false);
         }
-        if (isActive && collision.gameObject.CompareTag("Hint/MoveBackwards"))
-        {
-            inst_MoveBackwards = false;
-        }
-        if (isActive && collision.gameObject.CompareTag("Hint/MoveJump"))
-        {
-            inst_MoveJump = false;
-        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
         if (isActive && collision.gameObject.CompareTag("Instruction"))
         {
             InstructionGiver giver = collision.gameObject.GetComponent<InstructionGiver>();

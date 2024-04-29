@@ -1573,7 +1573,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 100
   jumpForce: 5
-  airbrush_slowness: 0
+  airbrush_slowness: 0.2
   oil_slippiness: -1
   maxVelocity: 5
   inst_MoveForward: 0

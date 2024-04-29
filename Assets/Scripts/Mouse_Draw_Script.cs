@@ -172,6 +172,7 @@ public class Mouse_Draw_Script : MonoBehaviour
                 Debug.LogError("INVALID PEN ID");
                 break;
         }
+        CheckCursor();
     }
 
     public void SwitchBrushUsingID(int id)
@@ -194,6 +195,7 @@ public class Mouse_Draw_Script : MonoBehaviour
                 Debug.LogError("INVALID PEN ID");
                 break;
         }
+        CheckCursor();
     }
 
     public void SwitchColour(string id)
@@ -216,6 +218,7 @@ public class Mouse_Draw_Script : MonoBehaviour
                 Debug.LogError("INVALID PEN ID");
                 break;
         }
+        CheckCursor();
     }
 
     public void SwitchColourUsingID(int id)
@@ -237,6 +240,45 @@ public class Mouse_Draw_Script : MonoBehaviour
                 break;
             default:
                 Debug.LogError("INVALID PEN ID");
+                break;
+        }
+        CheckCursor();
+    }
+
+    void CheckCursor()
+    {
+        switch(currentBrush, currentInstruction)
+        {
+            case (BrushType.pen, InstructionType.move_forward):
+                Cursor.SetCursor(brushStuff.b_p_f, new(brushStuff.b_p_f.width, brushStuff.b_p_f.height), CursorMode.Auto);
+                break;
+            case (BrushType.pen, InstructionType.move_backward):
+                Cursor.SetCursor(brushStuff.b_p_b, new(0, brushStuff.b_p_b.height), CursorMode.Auto);
+                break;
+            case (BrushType.pen, InstructionType.move_jump):
+                Cursor.SetCursor(brushStuff.b_p_j, new(brushStuff.b_p_j.width, brushStuff.b_p_j.height), CursorMode.Auto);
+                break;
+
+
+            case (BrushType.oil, InstructionType.move_forward):
+                Cursor.SetCursor(brushStuff.b_o_f, new(brushStuff.b_o_f.width, brushStuff.b_o_f.height), CursorMode.Auto);
+                break;
+            case (BrushType.oil, InstructionType.move_backward):
+                Cursor.SetCursor(brushStuff.b_o_b, new(0, brushStuff.b_o_b.height), CursorMode.Auto);
+                break;
+            case (BrushType.oil, InstructionType.move_jump):
+                Cursor.SetCursor(brushStuff.b_o_j, new(brushStuff.b_o_j.width, brushStuff.b_o_j.height), CursorMode.Auto);
+                break;
+
+
+            case (BrushType.airbrush, InstructionType.move_forward):
+                //Cursor.SetCursor(brushStuff.b_a_f, new(brushStuff.b_a_f.width, brushStuff.b_a_f.height), CursorMode.Auto);
+                break;
+            case (BrushType.airbrush, InstructionType.move_backward):
+                //Cursor.SetCursor(brushStuff.b_a_b, new(brushStuff.b_a_b.width, brushStuff.b_a_b.height), CursorMode.Auto);
+                break;
+            case (BrushType.airbrush, InstructionType.move_jump):
+                //Cursor.SetCursor(brushStuff.b_a_j, new(brushStuff.b_a_j.width, brushStuff.b_a_j.height), CursorMode.Auto);
                 break;
         }
     }

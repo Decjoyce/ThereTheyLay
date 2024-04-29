@@ -15,3 +15,9 @@ MonoBehaviour:
   pen_material: {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
   oil_material: {fileID: 2100000, guid: 2dc3425313eeba240bd99cd1b1832238, type: 2}
   airbrush_material: {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
+  b_p_f: {fileID: 2800000, guid: c4499e8d81912094baa82e6574ecdb15, type: 3}
+  b_p_b: {fileID: 2800000, guid: 8e233a795da61434fbf74ff167acf865, type: 3}
+  b_p_j: {fileID: 2800000, guid: c53b11660f2074e4194cf216ac3a9455, type: 3}
+  b_o_f: {fileID: 2800000, guid: c4499e8d81912094baa82e6574ecdb15, type: 3}
+  b_o_b: {fileID: 2800000, guid: 8e233a795da61434fbf74ff167acf865, type: 3}
+  b_o_j: {fileID: 2800000, guid: c53b11660f2074e4194cf216ac3a9455, type: 3}
