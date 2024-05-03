@@ -13,6 +13,7 @@ public enum BrushType
     pen,
     airbrush,
     oil,
+    eraser,
 }
 
 public enum InstructionType

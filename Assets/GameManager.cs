@@ -49,7 +49,7 @@ public class GameManager : MonoBehaviour
     {
         yield return new WaitForSecondsRealtime(3f);
         currentLevel++;
-        if (currentLevel == SceneManager.sceneCount)
+        if (currentLevel < SceneManager.sceneCount)
             Debug.Log("NO MORE LEVELS!");
         else
             SceneManager.LoadScene(currentLevel);

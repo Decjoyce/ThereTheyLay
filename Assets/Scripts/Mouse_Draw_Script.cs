@@ -51,20 +51,9 @@ public class Mouse_Draw_Script : MonoBehaviour
         {
             if (!isDrawing)
             {
-                GameObject newLine = Instantiate(brush, transform.position, Quaternion.identity, drawHolders[currentPenID]);
-                InstructionGiver giver = newLine.GetComponent<InstructionGiver>();
-                giver.brushType = currentBrush;
-                giver.instructionType = currentInstruction;
-                LineRenderer[] renderers = newLine.GetComponentsInChildren<LineRenderer>();
-                renderers[0].colorGradient = currentColour;
-                lineRenderer = renderers[0];
-                fakeLineRenderer = renderers[1];
-                edgeCollider = newLine.GetComponent<EdgeCollider2D>();
-                lineRenderer.positionCount = 1;
-                fakeLineRenderer.positionCount = 1;
-                previousPos = transform.position;
-                lineRenderer.startWidth = lineRenderer.endWidth = width;
-                fakeLineRenderer.startWidth = lineRenderer.endWidth = width;
+                if(currentBrush != BrushType.eraser)
+                    BeginDraw();
+
             }
                 
 
@@ -106,6 +95,24 @@ public class Mouse_Draw_Script : MonoBehaviour
                 edgeCollider = null;
             }
         }
+    }
+
+    void BeginDraw()
+    {
+        GameObject newLine = Instantiate(brush, transform.position, Quaternion.identity, drawHolders[currentPenID]);
+        InstructionGiver giver = newLine.GetComponent<InstructionGiver>();
+        giver.brushType = currentBrush;
+        giver.instructionType = currentInstruction;
+        LineRenderer[] renderers = newLine.GetComponentsInChildren<LineRenderer>();
+        renderers[0].colorGradient = currentColour;
+        lineRenderer = renderers[0];
+        fakeLineRenderer = renderers[1];
+        edgeCollider = newLine.GetComponent<EdgeCollider2D>();
+        lineRenderer.positionCount = 1;
+        fakeLineRenderer.positionCount = 1;
+        previousPos = transform.position;
+        lineRenderer.startWidth = lineRenderer.endWidth = width;
+        fakeLineRenderer.startWidth = lineRenderer.endWidth = width;
     }
 
     bool CheckIfInDrawArea(Vector2 mousePosition)
