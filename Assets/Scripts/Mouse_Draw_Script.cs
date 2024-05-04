@@ -1,23 +1,29 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Mouse_Draw_Script : MonoBehaviour
 {
+    public delegate void OffClick();
+    public static event OffClick OnOffClick;
+
     private LineRenderer lineRenderer;
     private LineRenderer fakeLineRenderer;
     private EdgeCollider2D edgeCollider;
     private Vector3 previousPos;
 
     [SerializeField] Transform mainDrawHolder;
-    [SerializeField] Transform[] drawHolders;
+    public Transform[] drawHolders;
 
-    int currentPenID;
+    public int currentPenID;
 
     [SerializeField] GameObject brush;
+    [SerializeField] GameObject eraser;
+    private GameObject activeEraser;
 
     [SerializeField] private float minDistance = 0.1f;
-    [SerializeField, Range(1,6)] private float width;
+    [Range(1,6)] public float width;
     [SerializeField] Transform drawWindow;
     [SerializeField] Vector2 drawWindowPos, drawWindowScale;
 
@@ -44,42 +50,70 @@ public class Mouse_Draw_Script : MonoBehaviour
         //lineRenderer.startWidth = lineRenderer.endWidth = width;
     }
 
+    private void OnEnable()
+    {
+        OnOffClick += Shush;
+    }
+
+    private void OnDisable()
+    {
+        OnOffClick -= Shush;
+    }
+
     private void Update()
     {
 
         if(Input.GetMouseButton(0) && CheckIfInDrawArea(Camera.main.ScreenToWorldPoint(Input.mousePosition)))
         {
-            if (!isDrawing)
+            if (currentBrush != BrushType.eraser)
             {
-                if(currentBrush != BrushType.eraser)
+                if (!isDrawing)
+                {
                     BeginDraw();
+                }
 
+
+                isDrawing = true;
+
+                Vector3 currentPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                currentPos.z = 0f;
+
+                if (Vector3.Distance(previousPos, currentPos) > minDistance)
+                {
+                    if (previousPos == transform.position)
+                    {
+                        lineRenderer.SetPosition(0, currentPos);
+                        fakeLineRenderer.SetPosition(0, currentPos);
+                        //edgeCollider.points[0] = currentPos;
+                    }
+
+                    else
+                    {
+                        lineRenderer.positionCount++;
+                        fakeLineRenderer.positionCount++;
+                        lineRenderer.SetPosition(lineRenderer.positionCount - 1, currentPos);
+                        fakeLineRenderer.SetPosition(fakeLineRenderer.positionCount - 1, currentPos);
+                        //edgeCollider.points[edgeCollider.pointCount - 1] = currentPos;
+                    }
+                    previousPos = currentPos;
+                }
             }
-                
-
-            isDrawing = true;
-
-            Vector3 currentPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            currentPos.z = 0f;
-
-            if(Vector3.Distance(previousPos, currentPos) > minDistance)
+            else
             {
-                if(previousPos == transform.position)
+
+                Vector3 currentPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                currentPos.z = 0f;
+
+
+                if (!isDrawing)
                 {
-                    lineRenderer.SetPosition(0, currentPos);
-                    fakeLineRenderer.SetPosition(0, currentPos);
-                    //edgeCollider.points[0] = currentPos;
+                    activeEraser = Instantiate(eraser, currentPos, Quaternion.identity, transform);
                 }
 
-                else
-                {
-                    lineRenderer.positionCount++;
-                    fakeLineRenderer.positionCount++;
-                    lineRenderer.SetPosition(lineRenderer.positionCount - 1, currentPos);
-                    fakeLineRenderer.SetPosition(fakeLineRenderer.positionCount - 1, currentPos);
-                    //edgeCollider.points[edgeCollider.pointCount - 1] = currentPos;
-                }
-                previousPos = currentPos;
+                isDrawing = true;
+
+                activeEraser.transform.position = currentPos;
+
             }
         }
 
@@ -87,12 +121,22 @@ public class Mouse_Draw_Script : MonoBehaviour
         {
             if (isDrawing)
             {
-                fakeLineRenderer.Simplify(0.1f);
-                SetEdgeCollider();
-                isDrawing = false;
-                lineRenderer = null;
-                fakeLineRenderer = null;
-                edgeCollider = null;
+                OnOffClick.Invoke();
+                if (currentBrush != BrushType.eraser)
+                {
+                    fakeLineRenderer.Simplify(0.1f);
+                    SetEdgeCollider();
+                    isDrawing = false;
+                    lineRenderer = null;
+                    fakeLineRenderer = null;
+                    edgeCollider = null;
+                }
+                else
+                {
+                    if (activeEraser)
+                        Destroy(activeEraser);
+                    isDrawing = false;
+                }
             }
         }
     }
@@ -112,7 +156,7 @@ public class Mouse_Draw_Script : MonoBehaviour
         fakeLineRenderer.positionCount = 1;
         previousPos = transform.position;
         lineRenderer.startWidth = lineRenderer.endWidth = width;
-        fakeLineRenderer.startWidth = lineRenderer.endWidth = width;
+        fakeLineRenderer.startWidth = fakeLineRenderer.endWidth = width;
     }
 
     bool CheckIfInDrawArea(Vector2 mousePosition)
@@ -304,6 +348,11 @@ public class Mouse_Draw_Script : MonoBehaviour
                 Debug.LogError("INVALID PEN ID");
                 return 0;
         }
+    }
+
+    public void Shush()
+    {
+        
     }
 
 }

@@ -8,6 +8,7 @@ TagManager:
   - Hint/MoveBackwards
   - Hint/MoveJump
   - Instruction
+  - Eraser
   layers:
   - Default
   - TransparentFX
