@@ -15,11 +15,14 @@ public class Main_Menu : MonoBehaviour
     [SerializeField] private GameObject SettingsMenuButton;
     [SerializeField] private GameObject PlayMenuButton;
     [SerializeField] private GameObject NoResButton;
+    [SerializeField] private GameObject EndGame;
+    [SerializeField] private GameObject EndGamePicture;
 
     private void Start()
     {
         PasswordOptions[0] = "Settings";
         PasswordOptions[1] = "Play";
+        PasswordOptions[2] = "End";
     }
     private void Update()
     {
@@ -44,6 +47,11 @@ public class Main_Menu : MonoBehaviour
             NoResButton.SetActive(true);
         }
 
+        if(PasswordText == PasswordOptions[2])
+        {
+            EndGame.SetActive(true);
+        }
+
 
     }
     public void InsertInput(string input)
@@ -60,5 +68,18 @@ public class Main_Menu : MonoBehaviour
     public void LoadScene()
     {
         SceneManager.LoadScene("Tutorial Level");
+    }
+
+    public void End()
+    {
+        StartCoroutine(OhFuck());
+    }
+
+     IEnumerator OhFuck()
+    {
+        EndGamePicture.SetActive(true);
+        yield return new WaitForSeconds(10);
+        Application.Quit();
+        Debug.Log("Quit");
     }
 }
