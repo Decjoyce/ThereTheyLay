@@ -7,7 +7,7 @@ using TMPro;
 
 public class Main_Menu : MonoBehaviour
 {
-    [SerializeField] private string PasswordText;
+    [SerializeField] private string UsernameText;
 
     [SerializeField] private string[] PasswordOptions;
     [SerializeField] private TextMeshProUGUI ButtonText;
@@ -26,14 +26,14 @@ public class Main_Menu : MonoBehaviour
     }
     private void Update()
     {
-        if(PasswordText == PasswordOptions[0])
+        if(UsernameText == PasswordOptions[0])
         {
             SettingsMenuButton.SetActive(true);
             PlayMenuButton.SetActive(false);
             NoResButton.SetActive(false);
         }
 
-        else if(PasswordText == PasswordOptions[1]) 
+        else if(UsernameText == PasswordOptions[1]) 
         {
             SettingsMenuButton.SetActive(false);
             PlayMenuButton.SetActive(true);
@@ -47,7 +47,7 @@ public class Main_Menu : MonoBehaviour
             NoResButton.SetActive(true);
         }
 
-        if(PasswordText == PasswordOptions[2])
+        if(UsernameText == PasswordOptions[2])
         {
             EndGame.SetActive(true);
         }
@@ -56,13 +56,13 @@ public class Main_Menu : MonoBehaviour
     }
     public void InsertInput(string input)
     {
-        PasswordText = input;
+        UsernameText = input;
         DisplayReactionText();
     }
 
     private void DisplayReactionText()
     {
-        ButtonText.text = PasswordText;
+        ButtonText.text = UsernameText;
     }
 
     public void LoadScene()
