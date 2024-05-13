@@ -18,11 +18,14 @@ public class Main_Menu : MonoBehaviour
     [SerializeField] private GameObject EndGame;
     [SerializeField] private GameObject EndGamePicture;
 
+    [SerializeField] GameObject secreteStuff;
+
     private void Start()
     {
         PasswordOptions[0] = "Settings";
         PasswordOptions[1] = "Play";
         PasswordOptions[2] = "End";
+        PasswordOptions[3] = "Dick Richardson";
     }
     private void Update()
     {
@@ -52,6 +55,10 @@ public class Main_Menu : MonoBehaviour
             EndGame.SetActive(true);
         }
 
+        if(UsernameText == PasswordOptions[3])
+        {
+            secreteStuff.SetActive(true);
+        }
 
     }
     public void InsertInput(string input)
