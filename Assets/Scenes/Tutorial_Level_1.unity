@@ -534,10 +534,10 @@ MonoBehaviour:
   brush: {fileID: 4821558775899782511, guid: 55c07866d987a184793e9d5e8e3152d4, type: 3}
   eraser: {fileID: 0}
   minDistance: 0.1
-  width: 1
+  width: 0.5
   drawWindow: {fileID: 1630666453}
   drawWindowPos: {x: 1.3, y: 0.4}
-  drawWindowScale: {x: 23.4, y: 12.1}
+  drawWindowScale: {x: 24.4, y: 13.1}
   instructionColours: {fileID: 11400000, guid: 70e24a03a4e369e4aafb0efa027afc77, type: 2}
   brushStuff: {fileID: 11400000, guid: 2f6659a3014499341ac90f94ab66bfef, type: 2}
   currentBrush: 0
@@ -2664,7 +2664,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1103003447
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3072,7 +3072,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1281230208
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3649,7 +3649,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1380087560
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4088,7 +4088,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 1.3, y: 0.4, z: 0}
-  m_LocalScale: {x: 23.4, y: 12.1, z: 12}
+  m_LocalScale: {x: 24.4, y: 13.1, z: 12}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -4198,7 +4198,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1690170390
 RectTransform:
   m_ObjectHideFlags: 0

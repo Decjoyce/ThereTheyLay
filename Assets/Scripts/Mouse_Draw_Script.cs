@@ -23,7 +23,7 @@ public class Mouse_Draw_Script : MonoBehaviour
     private GameObject activeEraser;
 
     [SerializeField] private float minDistance = 0.1f;
-    [Range(1,6)] public float width;
+    [Range(0.5f,6)] public float width;
     [SerializeField] Transform drawWindow;
     [SerializeField] Vector2 drawWindowPos, drawWindowScale;
 
