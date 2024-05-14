@@ -9,6 +9,8 @@ public class SO_BrushStuff : ScriptableObject
     public Material oil_material;
     public Material airbrush_material;
 
+    public Texture2D defaultCursor;
+
     public Texture2D Eraser;
 
     public Texture2D b_p_f;

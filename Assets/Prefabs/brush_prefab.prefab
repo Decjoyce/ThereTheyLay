@@ -191,12 +191,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbabeea852c442e4aa8fb893b8d15116, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  brush_pen: 1
-  brush_airbrush: 0
-  brush_oil: 0
-  give_MoveFoward: 1
-  give_MoveBack: 0
-  give_MoveJump: 0
+  brushType: 0
+  instructionType: 0
 --- !u!1 &7454808628027787799
 GameObject:
   m_ObjectHideFlags: 0
@@ -238,8 +234,8 @@ LineRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7454808628027787799}
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
   m_MotionVectors: 0
@@ -250,7 +246,7 @@ LineRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -270,7 +266,7 @@ LineRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -20
+  m_SortingOrder: -93
   m_Positions:
   - {x: 0, y: 0, z: 0}
   m_Parameters:
@@ -293,8 +289,8 @@ LineRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 1, g: 0, b: 0.7949209, a: 0}
-      key1: {r: 1, g: 0, b: 0.8789234, a: 0}
+      key0: {r: 1, g: 1, b: 1, a: 0}
+      key1: {r: 1, g: 1, b: 1, a: 0}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}

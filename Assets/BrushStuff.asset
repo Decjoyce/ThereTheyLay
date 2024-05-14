@@ -15,9 +15,11 @@ MonoBehaviour:
   pen_material: {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
   oil_material: {fileID: 2100000, guid: 2dc3425313eeba240bd99cd1b1832238, type: 2}
   airbrush_material: {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
-  b_p_f: {fileID: 2800000, guid: 35ed5eb62eaad414db167c6243aa483e, type: 3}
-  b_p_b: {fileID: 2800000, guid: 12531e31315697749b5aea80e8241280, type: 3}
-  b_p_j: {fileID: 2800000, guid: 4ddcca06e35a8204f8ab1ed868be93fe, type: 3}
+  defaultCursor: {fileID: 2800000, guid: bee6a052816955f4695572350726f71e, type: 3}
+  Eraser: {fileID: 2800000, guid: 28eba1cee7f34434db68f6d0a2fe90fe, type: 3}
+  b_p_f: {fileID: 2800000, guid: dcef12f6619b1ff41a82488d8f659d3c, type: 3}
+  b_p_b: {fileID: 2800000, guid: 2297380714ac736479c74e498c637171, type: 3}
+  b_p_j: {fileID: 2800000, guid: e85a0e24519c19344a7eadb0871fea60, type: 3}
   b_o_f: {fileID: 2800000, guid: 35ed5eb62eaad414db167c6243aa483e, type: 3}
   b_o_b: {fileID: 2800000, guid: 12531e31315697749b5aea80e8241280, type: 3}
   b_o_j: {fileID: 2800000, guid: 4ddcca06e35a8204f8ab1ed868be93fe, type: 3}

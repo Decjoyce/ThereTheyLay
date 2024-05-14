@@ -26,6 +26,7 @@ public class InstructionReceiver : MonoBehaviour
 
     float startingDrag;
     float currentMaxVelocity;
+    float currentMoveSpeed;
 
     // Start is called before the first frame update
     void Start()
@@ -33,6 +34,7 @@ public class InstructionReceiver : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         startingDrag = rb.drag;
         currentMaxVelocity = maxVelocity;
+        currentMoveSpeed = moveSpeed;
     }
 
     // Update is called once per frame
@@ -51,31 +53,38 @@ public class InstructionReceiver : MonoBehaviour
     {
         if (isActive && inst_MoveForward)
         {
-            rb.AddForce(Vector2.right * moveSpeed * Time.fixedDeltaTime * current_airbrush_slowness, ForceMode2D.Impulse);
+            rb.AddForce(Vector2.right * currentMoveSpeed * Time.fixedDeltaTime * current_airbrush_slowness, ForceMode2D.Impulse);
             if (rb.velocity.x >= currentMaxVelocity * current_airbrush_slowness)
                 rb.velocity = new(currentMaxVelocity * current_airbrush_slowness, rb.velocity.y);
-            //rb.velocity = new(moveSpeed * Time.fixedDeltaTime * current_oil_slippiness * current_airbrush_slowness, rb.velocity.y);
         }
         if (isActive && inst_MoveBackwards)
         {
-            rb.AddForce(-Vector2.right * moveSpeed * Time.fixedDeltaTime * current_airbrush_slowness, ForceMode2D.Impulse);
+            rb.AddForce(-Vector2.right * currentMoveSpeed * Time.fixedDeltaTime * current_airbrush_slowness, ForceMode2D.Impulse);
             if (rb.velocity.x <= -currentMaxVelocity * current_airbrush_slowness)
                 rb.velocity = new(-currentMaxVelocity * current_airbrush_slowness, rb.velocity.y);
-            //rb.velocity = new(-moveSpeed * Time.fixedDeltaTime * current_oil_slippiness * current_airbrush_slowness, rb.velocity.y);
         }
         if(isActive && inst_MoveJump)
         {
             rb.AddForce(Vector2.up * jumpForce * current_airbrush_slowness, ForceMode2D.Impulse);
         }
+
+
         if (affect_airbrush)
             current_airbrush_slowness = airbrush_slowness;
         else
             current_airbrush_slowness = 1;
 
         if (affect_oil)
-            currentMaxVelocity = 10f;
+        {
+            currentMaxVelocity = Mathf.Infinity;
+            currentMoveSpeed = moveSpeed / 2;
+        }
         else
+        {
             currentMaxVelocity = maxVelocity;
+            currentMoveSpeed = moveSpeed;
+        }
+
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

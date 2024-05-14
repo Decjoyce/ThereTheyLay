@@ -139,6 +139,14 @@ public class Mouse_Draw_Script : MonoBehaviour
                 }
             }
         }
+
+        if (CheckIfInDrawArea(Camera.main.ScreenToWorldPoint(Input.mousePosition)))
+        {
+            CheckCursor();
+        }
+        else
+            Cursor.SetCursor(brushStuff.defaultCursor, new(0, 0), CursorMode.Auto);
+
     }
 
     void BeginDraw()
@@ -161,7 +169,7 @@ public class Mouse_Draw_Script : MonoBehaviour
 
     bool CheckIfInDrawArea(Vector2 mousePosition)
     {
-        return mousePosition.x > -drawWindowScale.x / 2 && mousePosition.x < drawWindowScale.x / 2 && mousePosition.y > -drawWindowScale.y / 2 && mousePosition.y < drawWindowScale.y / 2;
+        return mousePosition.x > drawWindowPos.x + -drawWindowScale.x / 2 && mousePosition.x < drawWindowPos.x + drawWindowScale.x / 2 && mousePosition.y > drawWindowPos.y + -drawWindowScale.y / 2 && mousePosition.y < drawWindowPos.y + drawWindowScale.y / 2;
     }
 
     void SetEdgeCollider()
