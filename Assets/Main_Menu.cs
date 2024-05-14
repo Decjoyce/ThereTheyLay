@@ -74,7 +74,7 @@ public class Main_Menu : MonoBehaviour
 
     public void LoadScene()
     {
-        SceneManager.LoadScene("Tutorial Level");
+        SceneManager.LoadScene("Tutorial_Level_1");
     }
 
     public void End()

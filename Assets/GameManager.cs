@@ -23,7 +23,7 @@ public class GameManager : MonoBehaviour
 
     public TextMeshProUGUI texty;
 
-    public static int currentLevel;
+    public static int currentLevel = 1;
 
     // Start is called before the first frame update
     void Start()
