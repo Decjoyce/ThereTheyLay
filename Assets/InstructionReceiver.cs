@@ -28,6 +28,10 @@ public class InstructionReceiver : MonoBehaviour
     float currentMaxVelocity;
     float currentMoveSpeed;
 
+    [SerializeField] bool player;
+
+    [SerializeField] Animator anim;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -47,6 +51,13 @@ public class InstructionReceiver : MonoBehaviour
             rb.constraints = RigidbodyConstraints2D.FreezeRotation;
         }
         PlayerRotate();
+
+        if (player)
+        {
+            //anim.SetFloat("x_vel", rb.velocity.normalized.x);
+            anim.SetBool("instructed_forward", inst_MoveForward);
+            anim.SetBool("instructed_backward", inst_MoveBackwards);
+        }
     }
 
     private void FixedUpdate()
