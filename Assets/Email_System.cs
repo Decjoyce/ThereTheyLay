@@ -8,7 +8,9 @@ public class Email_System : MonoBehaviour
     [SerializeField] private GameObject EmailScreen;
     [SerializeField] private GameObject EmailButton;
     [SerializeField] private string Email;
+    [SerializeField] private string Subject;
     [SerializeField] private TextMeshProUGUI text;
+    [SerializeField] private TextMeshProUGUI subjecttext;
     private float PopupTime;
     [SerializeField] private AudioSource NotificationSound;
     [SerializeField] private AudioClip Sound;   
@@ -27,6 +29,7 @@ public class Email_System : MonoBehaviour
     {
         EmailScreen.SetActive(true);
         text.text = Email;
+        subjecttext.text = Subject;
     }
     public void OK()
     {
