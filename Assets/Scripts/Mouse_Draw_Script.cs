@@ -23,7 +23,7 @@ public class Mouse_Draw_Script : MonoBehaviour
     private GameObject activeEraser;
 
     [SerializeField] private float minDistance = 0.1f;
-    [Range(0.5f,6)] public float width;
+    [Range(0.25f,6)] public float width;
     [SerializeField] Transform drawWindow;
     [SerializeField] Vector2 drawWindowPos, drawWindowScale;
 
@@ -182,6 +182,12 @@ public class Mouse_Draw_Script : MonoBehaviour
         }
         edgeCollider.SetPoints(shit);
         shit.Clear();
+    }
+
+    public void ChangeBrushSize(float size)
+    {
+        float newSize = Mathf.Clamp(size, 0.25f, 1);
+        width = size;
     }
 
     public void ClearAllDrawings()
