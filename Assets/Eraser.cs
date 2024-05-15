@@ -85,8 +85,8 @@ public class Eraser : MonoBehaviour
             newfakeLineRenderer.positionCount = newLRPoints.Length;
             newlineRenderer.SetPositions(newLRPoints);
             newfakeLineRenderer.SetPositions(newLRPoints);
-            newlineRenderer.startWidth = newlineRenderer.endWidth = papa.width;
-            newfakeLineRenderer.startWidth = newfakeLineRenderer.endWidth = papa.width;
+            newlineRenderer.startWidth = newlineRenderer.endWidth = lineRenderer.startWidth;
+            newfakeLineRenderer.startWidth = newfakeLineRenderer.endWidth = lineRenderer.startWidth;
 
             newfakeLineRenderer.Simplify(0.1f);
 
