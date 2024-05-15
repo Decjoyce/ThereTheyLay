@@ -317,6 +317,16 @@ public class Mouse_Draw_Script : MonoBehaviour
     {
         switch(currentBrush, currentInstruction)
         {
+            case (BrushType.eraser, InstructionType.move_forward):
+                Cursor.SetCursor(brushStuff.Eraser, new(brushStuff.Eraser.width, brushStuff.Eraser.height), CursorMode.Auto);
+                break;
+            case (BrushType.eraser, InstructionType.move_backward):
+                Cursor.SetCursor(brushStuff.Eraser, new(0, brushStuff.Eraser.height), CursorMode.Auto);
+                break;
+            case (BrushType.eraser, InstructionType.move_jump):
+                Cursor.SetCursor(brushStuff.Eraser, new(brushStuff.Eraser.width, brushStuff.Eraser.height), CursorMode.Auto);
+                break;
+
             case (BrushType.pen, InstructionType.move_forward):
                 Cursor.SetCursor(brushStuff.b_p_f, new(brushStuff.b_p_f.width, brushStuff.b_p_f.height), CursorMode.Auto);
                 break;
