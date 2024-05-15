@@ -256,6 +256,9 @@ public class Mouse_Draw_Script : MonoBehaviour
                 currentBrush = BrushType.airbrush;
                 currentMaterial = brushStuff.airbrush_material;
                 break;
+            case 3:
+                currentBrush = BrushType.eraser;
+                break;
             default:
                 Debug.LogError("INVALID PEN ID");
                 break;
@@ -344,6 +347,8 @@ public class Mouse_Draw_Script : MonoBehaviour
                 break;
             case (BrushType.airbrush, InstructionType.move_jump):
                 //Cursor.SetCursor(brushStuff.b_a_j, new(brushStuff.b_a_j.width, brushStuff.b_a_j.height), CursorMode.Auto);
+                break;
+            default:
                 break;
         }
     }

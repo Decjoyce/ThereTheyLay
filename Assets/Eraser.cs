@@ -12,14 +12,17 @@ public class Eraser : MonoBehaviour
 
     GameObject newLine;
 
+    Collider2D col;
+
     private void Start()
     {
         papa = transform.parent.GetComponent<Mouse_Draw_Script>();
+        col = GetComponent<Collider2D>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Instruction") && collision.gameObject != newLine)
+        if (collision.CompareTag("Instruction"))
         {
             LineRenderer[] renderers = collision.GetComponentsInChildren<LineRenderer>();
             LineRenderer lineRenderer = renderers[0];
@@ -33,15 +36,16 @@ public class Eraser : MonoBehaviour
             int closestIndex2 = 0;
             for(int i = 0; i < lineRenderer.positionCount; i++)
             {
-                float newDist = Vector3.Distance(transform.position, lineRenderer.GetPosition(i));
-                if(newDist < closestDist1)
+                float newDist1 = Vector3.Distance(transform.position, lineRenderer.GetPosition(i)) - col.bounds.extents.x;
+                float newDist2 = Vector3.Distance(transform.position, lineRenderer.GetPosition(i)) + col.bounds.extents.x;
+                if(newDist1 < closestDist1)
                 {
-                    closestDist1 = newDist;
+                    closestDist1 = newDist1;
                     closestIndex1 = i;
                 }
-                else if(newDist < closestDist2)
+                if(newDist2 < closestDist2)
                 {
-                    closestDist2 = newDist;
+                    closestDist2 = newDist2;
                     closestIndex2 = i;
                 }
             }
@@ -56,14 +60,13 @@ public class Eraser : MonoBehaviour
                 fakeInt++;
             }
 
-
             lineRenderer.positionCount = closestIndex1;
             fakeLineRenderer.positionCount = closestIndex1;
 
             edgeCollider.edgeRadius = papa.width / 2f;
-            for (int i = 0; i < fakeLineRenderer.positionCount; i++)
+            for (int i = 0; i < lineRenderer.positionCount; i++)
             {
-                Vector3 convertedPos = fakeLineRenderer.GetPosition(i);
+                Vector3 convertedPos = lineRenderer.GetPosition(i);
                 shit.Add(new Vector2(convertedPos.x, convertedPos.y));
             }
             edgeCollider.SetPoints(shit);
@@ -95,6 +98,11 @@ public class Eraser : MonoBehaviour
             }
             newEdgeCollider.SetPoints(shit);
             shit.Clear();
+
+            if (lineRenderer.positionCount <= 1)
+                Destroy(lineRenderer.gameObject);
+            if (newlineRenderer.positionCount <= 1)
+                Destroy(newlineRenderer.gameObject);
         }
     }
 
