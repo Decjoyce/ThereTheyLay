@@ -71,12 +71,7 @@ public class InstructionReceiver : MonoBehaviour
     {
         PlayerRotate();
 
-        if (player)
-        {
             anim.SetFloat("x_vel", rb.velocity.normalized.x);
-            anim.SetBool("instructed_forward", inst_MoveForward);
-            anim.SetBool("instructed_backward", inst_MoveBackwards);
-        }
     }
 
     private void FixedUpdate()
