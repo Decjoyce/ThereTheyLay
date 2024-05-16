@@ -151,15 +151,18 @@ public class Mouse_Draw_Script : MonoBehaviour
 
     void BeginDraw()
     {
-        GameObject newLine = Instantiate(brush, transform.position, Quaternion.identity, drawHolders[currentPenID]);
+        GameObject newLine = Instantiate(brush, transform.position, Quaternion.identity, GetDrawHolder());
         InstructionGiver giver = newLine.GetComponent<InstructionGiver>();
         giver.brushType = currentBrush;
         giver.instructionType = currentInstruction;
         LineRenderer[] renderers = newLine.GetComponentsInChildren<LineRenderer>();
         renderers[0].colorGradient = currentColour;
+        renderers[0].material = currentMaterial;
         lineRenderer = renderers[0];
         fakeLineRenderer = renderers[1];
         edgeCollider = newLine.GetComponent<EdgeCollider2D>();
+        if (currentBrush == BrushType.airbrush)
+            edgeCollider.isTrigger = true;
         lineRenderer.positionCount = 1;
         fakeLineRenderer.positionCount = 1;
         previousPos = transform.position;
@@ -196,7 +199,10 @@ public class Mouse_Draw_Script : MonoBehaviour
         {
             foreach(Transform drawing in holder)
             {
-                Destroy(drawing.gameObject);
+                foreach (Transform drawing1 in drawing)
+                {
+                    Destroy(drawing1.gameObject);
+                }
             }
         }
     }
@@ -214,6 +220,71 @@ public class Mouse_Draw_Script : MonoBehaviour
         foreach (Transform drawing in drawHolders[id])
         {
             Destroy(drawing.gameObject);
+        }
+    }
+
+    Transform GetDrawHolder()
+    {
+        switch (currentBrush, currentInstruction)
+        {
+            case (BrushType.pen, InstructionType.move_forward):
+                return drawHolders[1];                
+            case (BrushType.pen, InstructionType.move_backward):
+                return drawHolders[2];
+            case (BrushType.pen, InstructionType.move_jump):
+                return drawHolders[3];
+
+
+            case (BrushType.oil, InstructionType.move_forward):
+                return drawHolders[5];
+            case (BrushType.oil, InstructionType.move_backward):
+                return drawHolders[6];
+            case (BrushType.oil, InstructionType.move_jump):
+                return drawHolders[7];
+
+
+            case (BrushType.airbrush, InstructionType.move_forward):
+                return drawHolders[9];
+            case (BrushType.airbrush, InstructionType.move_backward):
+                return drawHolders[10];
+            case (BrushType.airbrush, InstructionType.move_jump):
+                return drawHolders[11];
+            default:
+                return drawHolders[12];
+        }
+    }
+
+    public void DestroyDrawHolder(int i)
+    {
+        switch (i)
+        {
+            case 0:
+                foreach (Transform drawing in drawHolders[0])
+                {
+                    foreach (Transform drawing1 in drawing)
+                    {
+                        Destroy(drawing1.gameObject);
+                    }
+                }
+                break;
+            case 1:
+                foreach (Transform drawing in drawHolders[4])
+                {
+                    foreach (Transform drawing1 in drawing)
+                    {
+                        Destroy(drawing1.gameObject);
+                    }
+                }
+                break;
+            case 2:
+                foreach (Transform drawing in drawHolders[8])
+                {
+                    foreach (Transform drawing1 in drawing)
+                    {
+                        Destroy(drawing1.gameObject);
+                    }
+                }
+                break;
         }
     }
 
@@ -327,6 +398,7 @@ public class Mouse_Draw_Script : MonoBehaviour
                 Cursor.SetCursor(brushStuff.Eraser, new(brushStuff.Eraser.width, brushStuff.Eraser.height), CursorMode.Auto);
                 break;
 
+
             case (BrushType.pen, InstructionType.move_forward):
                 Cursor.SetCursor(brushStuff.b_p_f, new(brushStuff.b_p_f.width, brushStuff.b_p_f.height), CursorMode.Auto);
                 break;
@@ -350,13 +422,13 @@ public class Mouse_Draw_Script : MonoBehaviour
 
 
             case (BrushType.airbrush, InstructionType.move_forward):
-                //Cursor.SetCursor(brushStuff.b_a_f, new(brushStuff.b_a_f.width, brushStuff.b_a_f.height), CursorMode.Auto);
+                Cursor.SetCursor(brushStuff.b_a_f, new(brushStuff.b_a_f.width, brushStuff.b_a_f.height), CursorMode.Auto);
                 break;
             case (BrushType.airbrush, InstructionType.move_backward):
-                //Cursor.SetCursor(brushStuff.b_a_b, new(brushStuff.b_a_b.width, brushStuff.b_a_b.height), CursorMode.Auto);
+                Cursor.SetCursor(brushStuff.b_a_b, new(brushStuff.b_a_b.width, brushStuff.b_a_b.height), CursorMode.Auto);
                 break;
             case (BrushType.airbrush, InstructionType.move_jump):
-                //Cursor.SetCursor(brushStuff.b_a_j, new(brushStuff.b_a_j.width, brushStuff.b_a_j.height), CursorMode.Auto);
+                Cursor.SetCursor(brushStuff.b_a_j, new(brushStuff.b_a_j.width, brushStuff.b_a_j.height), CursorMode.Auto);
                 break;
             default:
                 break;

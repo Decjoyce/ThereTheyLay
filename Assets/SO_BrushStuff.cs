@@ -20,4 +20,8 @@ public class SO_BrushStuff : ScriptableObject
     public Texture2D b_o_f;
     public Texture2D b_o_b;
     public Texture2D b_o_j;
+
+    public Texture2D b_a_f;
+    public Texture2D b_a_b;
+    public Texture2D b_a_j;
 }

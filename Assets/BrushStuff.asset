@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: BrushStuff
   m_EditorClassIdentifier: 
   pen_material: {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
-  oil_material: {fileID: 2100000, guid: 2dc3425313eeba240bd99cd1b1832238, type: 2}
-  airbrush_material: {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
+  oil_material: {fileID: 2100000, guid: 2488c36a9f66b2b4883440bcc6803b2d, type: 2}
+  airbrush_material: {fileID: 2100000, guid: 7b8e8f4d2d10f8845b2d738bbe8c8e7b, type: 2}
   defaultCursor: {fileID: 2800000, guid: bd622cbcc0c68f845a45fdb9c4d7840e, type: 3}
   Eraser: {fileID: 2800000, guid: 28eba1cee7f34434db68f6d0a2fe90fe, type: 3}
   b_p_f: {fileID: 2800000, guid: dcef12f6619b1ff41a82488d8f659d3c, type: 3}
@@ -23,3 +23,6 @@ MonoBehaviour:
   b_o_f: {fileID: 2800000, guid: 35ed5eb62eaad414db167c6243aa483e, type: 3}
   b_o_b: {fileID: 2800000, guid: 12531e31315697749b5aea80e8241280, type: 3}
   b_o_j: {fileID: 2800000, guid: 4ddcca06e35a8204f8ab1ed868be93fe, type: 3}
+  b_a_f: {fileID: 2800000, guid: 39ee6c40bd72e324ea876b826f6ed40f, type: 3}
+  b_a_b: {fileID: 2800000, guid: 0cd7f8de0c361794a960e356347e1b39, type: 3}
+  b_a_j: {fileID: 2800000, guid: b976c4fdb89a14747b717921bae2bb5e, type: 3}

@@ -217,7 +217,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 100
   jumpForce: 5
-  airbrush_slowness: 0
+  airbrush_slowness: 0.2
   oil_slippiness: 0
   maxVelocity: 5
   inst_MoveForward: 0
@@ -227,3 +227,9 @@ MonoBehaviour:
   affect_airbrush: 0
   player: 1
   anim: {fileID: 4238657107111808177}
+  givers_forward: []
+  givers_backward: []
+  givers_jump: []
+  givers_pen: []
+  givers_oil: []
+  givers_air: []

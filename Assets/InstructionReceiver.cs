@@ -32,6 +32,14 @@ public class InstructionReceiver : MonoBehaviour
 
     [SerializeField] Animator anim;
 
+    public List<InstructionGiver> givers_forward = new List<InstructionGiver>();
+    public List<InstructionGiver> givers_backward = new List<InstructionGiver>();
+    public List<InstructionGiver> givers_jump = new List<InstructionGiver>();
+
+    public List<InstructionGiver> givers_pen = new List<InstructionGiver>();
+    public List<InstructionGiver> givers_oil = new List<InstructionGiver>();
+    public List<InstructionGiver> givers_air = new List<InstructionGiver>();
+
     // Start is called before the first frame update
     void Start()
     {
@@ -54,7 +62,7 @@ public class InstructionReceiver : MonoBehaviour
 
         if (player)
         {
-            //anim.SetFloat("x_vel", rb.velocity.normalized.x);
+            anim.SetFloat("x_vel", rb.velocity.normalized.x);
             anim.SetBool("instructed_forward", inst_MoveForward);
             anim.SetBool("instructed_backward", inst_MoveBackwards);
         }
@@ -62,30 +70,30 @@ public class InstructionReceiver : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (isActive && inst_MoveForward)
+        if (isActive && givers_forward.Count > 0)
         {
             rb.AddForce(Vector2.right * currentMoveSpeed * Time.fixedDeltaTime * current_airbrush_slowness, ForceMode2D.Impulse);
             if (rb.velocity.x >= currentMaxVelocity * current_airbrush_slowness)
                 rb.velocity = new(currentMaxVelocity * current_airbrush_slowness, rb.velocity.y);
         }
-        if (isActive && inst_MoveBackwards)
+        if (isActive && givers_backward.Count > 0)
         {
             rb.AddForce(-Vector2.right * currentMoveSpeed * Time.fixedDeltaTime * current_airbrush_slowness, ForceMode2D.Impulse);
             if (rb.velocity.x <= -currentMaxVelocity * current_airbrush_slowness)
                 rb.velocity = new(-currentMaxVelocity * current_airbrush_slowness, rb.velocity.y);
         }
-        if(isActive && inst_MoveJump)
+        if(isActive && givers_jump.Count > 0)
         {
             rb.AddForce(Vector2.up * jumpForce * current_airbrush_slowness, ForceMode2D.Impulse);
         }
 
 
-        if (affect_airbrush)
+        if (givers_air.Count > 0)
             current_airbrush_slowness = airbrush_slowness;
         else
             current_airbrush_slowness = 1;
 
-        if (affect_oil)
+        if (givers_oil.Count > 0)
         {
             currentMaxVelocity = Mathf.Infinity;
             currentMoveSpeed = moveSpeed / 2;
@@ -139,23 +147,38 @@ public class InstructionReceiver : MonoBehaviour
         switch (_giver.brushType)
         {
             case BrushType.airbrush:
-                affect_airbrush = receive;
+                if (receive)
+                    givers_air.Add(_giver);
+                else
+                    givers_air.Remove(_giver);
                 break;
             case BrushType.oil:
-                affect_oil = receive;
+                if (receive)
+                    givers_oil.Add(_giver);
+                else
+                    givers_oil.Remove(_giver);
                 break;
         }
 
         switch (_giver.instructionType)
         {
             case InstructionType.move_forward:
-                inst_MoveForward = receive;
+                if (receive)
+                    givers_forward.Add(_giver);
+                else
+                    givers_forward.Remove(_giver);
                 break;
             case InstructionType.move_backward:
-                inst_MoveBackwards = receive;
+                if (receive)
+                    givers_backward.Add(_giver);
+                else
+                    givers_backward.Remove(_giver);
                 break;
             case InstructionType.move_jump:
-                inst_MoveJump = receive;
+                if (receive)
+                    givers_jump.Add(_giver);
+                else
+                    givers_jump.Remove(_giver);
                 break;
         }
     }
