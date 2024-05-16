@@ -8,6 +8,9 @@ public class Mouse_Draw_Script : MonoBehaviour
     public delegate void OffClick();
     public static event OffClick OnOffClick;
 
+    public delegate void OnUnPause();
+    public static event OnUnPause onUnPause;
+
     private LineRenderer lineRenderer;
     private LineRenderer fakeLineRenderer;
     private EdgeCollider2D edgeCollider;
@@ -53,11 +56,13 @@ public class Mouse_Draw_Script : MonoBehaviour
     private void OnEnable()
     {
         OnOffClick += Shush;
+        onUnPause += Shush;
     }
 
     private void OnDisable()
     {
         OnOffClick -= Shush;
+        onUnPause -= Shush;
     }
 
     private void Update()
@@ -147,6 +152,16 @@ public class Mouse_Draw_Script : MonoBehaviour
         else
             Cursor.SetCursor(brushStuff.defaultCursor, new(0, 0), CursorMode.Auto);
 
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            onUnPause.Invoke();
+        }
+
+    }
+
+    public void UnPauseGame()
+    {
+        onUnPause.Invoke();
     }
 
     void BeginDraw()

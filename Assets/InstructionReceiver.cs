@@ -49,15 +49,26 @@ public class InstructionReceiver : MonoBehaviour
         currentMoveSpeed = moveSpeed;
     }
 
+    private void OnEnable()
+    {
+        Mouse_Draw_Script.onUnPause += UnFreeze;
+    }
+
+    private void OnDisable()
+    {
+        Mouse_Draw_Script.onUnPause -= UnFreeze;
+    }
+
+    public void UnFreeze()
+    {
+        isActive = true;
+        rb.constraints = RigidbodyConstraints2D.None;
+        rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+    }
+
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            isActive = true;
-            rb.constraints = RigidbodyConstraints2D.None;
-            rb.constraints = RigidbodyConstraints2D.FreezeRotation;
-        }
         PlayerRotate();
 
         if (player)

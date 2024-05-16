@@ -16,7 +16,12 @@ public class RestartScene : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.R))
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            ResetScene();
         }
+    }
+
+    public void ResetScene()
+    {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
