@@ -199,7 +199,7 @@ public class Mouse_Draw_Script : MonoBehaviour
 
     void BeginDraw()
     {
-        GameObject newLine = Instantiate(brush, transform.position, Quaternion.identity, GetDrawHolder());
+        GameObject newLine = Instantiate(brush, transform.position, Quaternion.identity, GetDrawHolder(currentBrush, currentInstruction));
         InstructionGiver giver = newLine.GetComponent<InstructionGiver>();
         giver.brushType = currentBrush;
         giver.instructionType = currentInstruction;
@@ -271,9 +271,9 @@ public class Mouse_Draw_Script : MonoBehaviour
         }
     }
 
-    Transform GetDrawHolder()
+    public Transform GetDrawHolder(BrushType bt, InstructionType inst)
     {
-        switch (currentBrush, currentInstruction)
+        switch (bt, inst)
         {
             case (BrushType.pen, InstructionType.move_forward):
                 return drawHolders[1];                
@@ -298,6 +298,7 @@ public class Mouse_Draw_Script : MonoBehaviour
             case (BrushType.airbrush, InstructionType.move_jump):
                 return drawHolders[11];
             default:
+               // Debug.Log(bt + " " + inst);
                 return drawHolders[12];
         }
     }

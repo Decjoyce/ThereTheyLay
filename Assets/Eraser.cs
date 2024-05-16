@@ -24,11 +24,12 @@ public class Eraser : MonoBehaviour
     {
         if (collision.CompareTag("Instruction"))
         {
+            Debug.Log("HIT");
             LineRenderer[] renderers = collision.GetComponentsInChildren<LineRenderer>();
             LineRenderer lineRenderer = renderers[0];
             LineRenderer fakeLineRenderer = renderers[1];
             EdgeCollider2D edgeCollider = collision.GetComponent<EdgeCollider2D>();
-
+            InstructionGiver inst_giver = collision.GetComponent<InstructionGiver>();
 
             float closestDist1 = 10000f;
             float closestDist2 = 15000f;
@@ -50,11 +51,9 @@ public class Eraser : MonoBehaviour
                 }
             }
 
-            Debug.Log(closestIndex1 + " " + closestIndex2);
-
-            Vector3[] newLRPoints = new Vector3[lineRenderer.positionCount - closestIndex2];
+            Vector3[] newLRPoints = new Vector3[lineRenderer.positionCount - closestIndex2 - 1];
             int fakeInt = 0;
-            for(int i = closestIndex2; i < lineRenderer.positionCount; i++)
+            for(int i = closestIndex2 + 1; i < lineRenderer.positionCount; i++)
             {
                 newLRPoints[fakeInt] = lineRenderer.GetPosition(i);
 
@@ -62,11 +61,16 @@ public class Eraser : MonoBehaviour
                 fakeInt++;
             }
 
-            lineRenderer.positionCount = closestIndex1;
-            fakeLineRenderer.positionCount = closestIndex1;
-
-            //Vector3 newPos = lineRenderer.GetPosition(lineRenderer.positionCount - 1) - lineRenderer.GetPosition(lineRenderer.positionCount - 2);
-            //lineRenderer.SetPosition(0, lineRenderer.GetPosition(0) + newPos.normalized * col.bounds.extents.);
+            if(closestIndex1 > 0)
+            {
+                lineRenderer.positionCount = closestIndex1 - 1;
+                fakeLineRenderer.positionCount = closestIndex1 - 1;
+            }
+            else
+            {
+                lineRenderer.positionCount = closestIndex1;
+                fakeLineRenderer.positionCount = closestIndex1;
+            }
 
             edgeCollider.edgeRadius = papa.width / 2f;
             for (int i = 0; i < lineRenderer.positionCount; i++)
@@ -76,16 +80,19 @@ public class Eraser : MonoBehaviour
             }
             edgeCollider.SetPoints(shit);
             shit.Clear();
+            newLine = Instantiate(brushPrefab, Vector3.zero, Quaternion.identity, papa.GetDrawHolder(inst_giver.brushType, inst_giver.instructionType));
 
-            newLine = Instantiate(brushPrefab, Vector3.zero, Quaternion.identity, papa.drawHolders[papa.currentPenID]);
             InstructionGiver giver = newLine.GetComponent<InstructionGiver>();
-            giver.brushType = papa.currentBrush;
-            giver.instructionType = papa.currentInstruction;
+            giver.brushType = inst_giver.brushType;
+            giver.instructionType = inst_giver.instructionType;
+
             LineRenderer[] newRenderers = newLine.GetComponentsInChildren<LineRenderer>();
             renderers[0].colorGradient = lineRenderer.colorGradient;
             LineRenderer newlineRenderer = newRenderers[0];
             LineRenderer newfakeLineRenderer = newRenderers[1];
+
             EdgeCollider2D newEdgeCollider = newLine.GetComponent<EdgeCollider2D>();
+
             newlineRenderer.positionCount = newLRPoints.Length;
             newfakeLineRenderer.positionCount = newLRPoints.Length;
             newlineRenderer.SetPositions(newLRPoints);
