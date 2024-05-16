@@ -271,7 +271,7 @@ MonoBehaviour:
   currentPenID: 0
   brush: {fileID: 4821558775899782511, guid: 55c07866d987a184793e9d5e8e3152d4, type: 3}
   eraser: {fileID: 2719496510086402407, guid: 7615af4e49c3cdd4ca7408a36e83d9eb, type: 3}
-  minDistance: 0.1
+  minDistance: 0.2
   width: 0.5
   drawWindow: {fileID: 1630666453}
   drawWindowPos: {x: 1.3, y: 0.4}

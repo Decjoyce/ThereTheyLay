@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -265,10 +266,52 @@ public class Mouse_Draw_Script : MonoBehaviour
 
     public void ClearDrawingUsingID(int id)
     {
-        foreach (Transform drawing in drawHolders[id])
+        switch (id)
         {
-            Destroy(drawing.gameObject);
+            case 0:
+                foreach (Transform drawing in drawHolders[1])
+                {
+                    Destroy(drawing.gameObject);
+                }
+                foreach (Transform drawing in drawHolders[5])
+                {
+                    Destroy(drawing.gameObject);
+                }
+                foreach (Transform drawing in drawHolders[9])
+                {
+                    Destroy(drawing.gameObject);
+                }
+                break;
+            case 1:
+                foreach (Transform drawing in drawHolders[2])
+                {
+                    Destroy(drawing.gameObject);
+                }
+                foreach (Transform drawing in drawHolders[6])
+                {
+                    Destroy(drawing.gameObject);
+                }
+                foreach (Transform drawing in drawHolders[10])
+                {
+                    Destroy(drawing.gameObject);
+                }
+                break;
+            case 2:
+                foreach (Transform drawing in drawHolders[3])
+                {
+                    Destroy(drawing.gameObject);
+                }
+                foreach (Transform drawing in drawHolders[7])
+                {
+                    Destroy(drawing.gameObject);
+                }
+                foreach (Transform drawing in drawHolders[11])
+                {
+                    Destroy(drawing.gameObject);
+                }
+                break;
         }
+
     }
 
     public Transform GetDrawHolder(BrushType bt, InstructionType inst)
