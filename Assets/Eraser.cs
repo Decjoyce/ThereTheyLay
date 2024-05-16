@@ -36,8 +36,8 @@ public class Eraser : MonoBehaviour
             int closestIndex2 = 0;
             for(int i = 0; i < lineRenderer.positionCount; i++)
             {
-                float newDist1 = Vector3.Distance(transform.position, lineRenderer.GetPosition(i)) - col.bounds.extents.x;
-                float newDist2 = Vector3.Distance(transform.position, lineRenderer.GetPosition(i)) + col.bounds.extents.x;
+                float newDist1 = Vector3.Distance(transform.position, lineRenderer.GetPosition(i));
+                float newDist2 = Vector3.Distance(transform.position, lineRenderer.GetPosition(i));
                 if(newDist1 < closestDist1)
                 {
                     closestDist1 = newDist1;
@@ -50,18 +50,23 @@ public class Eraser : MonoBehaviour
                 }
             }
 
+            Debug.Log(closestIndex1 + " " + closestIndex2);
+
             Vector3[] newLRPoints = new Vector3[lineRenderer.positionCount - closestIndex2];
             int fakeInt = 0;
             for(int i = closestIndex2; i < lineRenderer.positionCount; i++)
             {
                 newLRPoints[fakeInt] = lineRenderer.GetPosition(i);
-                Debug.Log(newLRPoints[fakeInt] + " [] " + lineRenderer.GetPosition(i));
+
 
                 fakeInt++;
             }
 
             lineRenderer.positionCount = closestIndex1;
             fakeLineRenderer.positionCount = closestIndex1;
+
+            //Vector3 newPos = lineRenderer.GetPosition(lineRenderer.positionCount - 1) - lineRenderer.GetPosition(lineRenderer.positionCount - 2);
+            //lineRenderer.SetPosition(0, lineRenderer.GetPosition(0) + newPos.normalized * col.bounds.extents.);
 
             edgeCollider.edgeRadius = papa.width / 2f;
             for (int i = 0; i < lineRenderer.positionCount; i++)
@@ -77,7 +82,7 @@ public class Eraser : MonoBehaviour
             giver.brushType = papa.currentBrush;
             giver.instructionType = papa.currentInstruction;
             LineRenderer[] newRenderers = newLine.GetComponentsInChildren<LineRenderer>();
-            renderers[0].colorGradient = papa.currentColour;
+            renderers[0].colorGradient = lineRenderer.colorGradient;
             LineRenderer newlineRenderer = newRenderers[0];
             LineRenderer newfakeLineRenderer = newRenderers[1];
             EdgeCollider2D newEdgeCollider = newLine.GetComponent<EdgeCollider2D>();
