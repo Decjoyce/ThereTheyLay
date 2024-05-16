@@ -23,12 +23,12 @@ public class GameManager : MonoBehaviour
 
     public TextMeshProUGUI texty;
 
-    public static int currentLevel = 1;
+    public int currentLevel;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+            currentLevel = SceneManager.GetActiveScene().buildIndex;
     }
 
     // Update is called once per frame
@@ -49,9 +49,6 @@ public class GameManager : MonoBehaviour
     {
         yield return new WaitForSecondsRealtime(3f);
         currentLevel++;
-        if (currentLevel < SceneManager.sceneCount)
-            Debug.Log("NO MORE LEVELS!");
-        else
-            SceneManager.LoadScene(currentLevel);
+        SceneManager.LoadScene(currentLevel);
     }
 }

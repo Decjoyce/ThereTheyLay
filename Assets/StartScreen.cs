@@ -24,4 +24,9 @@ public class StartScreen : MonoBehaviour
         Application.OpenURL("https://yourbuddyaaron.itch.io/bobs-life");
         Debug.Log("Bobs life");
     }
+
+    public void OpenStart()
+    {
+        PopupWindow.SetActive(!PopupWindow.activeSelf);
+    }
 }
