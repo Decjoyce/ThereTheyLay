@@ -42,10 +42,13 @@ public class Mouse_Draw_Script : MonoBehaviour
     public InstructionType currentInstruction;
     public Gradient currentColour;
 
+    Camera cam;
+
     private void Start()
     {
         //lineRenderer = GetComponent<LineRenderer>();
         //lineRenderer.positionCount = 1;
+        cam = Camera.main;
         SwitchColourUsingID(0);
         SwitchBrushUsingID(0);
         previousPos = transform.position;
@@ -70,6 +73,36 @@ public class Mouse_Draw_Script : MonoBehaviour
 
         if(Input.GetMouseButton(0) && CheckIfInDrawArea(Camera.main.ScreenToWorldPoint(Input.mousePosition)))
         {
+            Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+
+            if(Physics.Raycast(ray, out hit))
+            {
+                if (hit.transform.CompareTag("NoDrawBox"))
+                {
+                    if (isDrawing)
+                    {
+                        OnOffClick.Invoke();
+                        if (currentBrush != BrushType.eraser)
+                        {
+                            fakeLineRenderer.Simplify(0.1f);
+                            SetEdgeCollider();
+                            isDrawing = false;
+                            lineRenderer = null;
+                            fakeLineRenderer = null;
+                            edgeCollider = null;
+                        }
+                        else
+                        {
+                            if (activeEraser)
+                                Destroy(activeEraser);
+                            isDrawing = false;
+                        }
+                    }
+                    return;
+                }
+            }
+
             if (currentBrush != BrushType.eraser)
             {
                 if (!isDrawing)
