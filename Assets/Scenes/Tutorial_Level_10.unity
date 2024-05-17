@@ -1333,6 +1333,30 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4982383950665750504, guid: 464823974a6de7e48a8e8678cff61be8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5698733153074820029, guid: 464823974a6de7e48a8e8678cff61be8, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 5698733153074820029, guid: 464823974a6de7e48a8e8678cff61be8, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 5698733153074820029, guid: 464823974a6de7e48a8e8678cff61be8, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5698733153074820029, guid: 464823974a6de7e48a8e8678cff61be8, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5698733153074820029, guid: 464823974a6de7e48a8e8678cff61be8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -90
+      objectReference: {fileID: 0}
     - target: {fileID: 6184776790282128033, guid: 464823974a6de7e48a8e8678cff61be8, type: 3}
       propertyPath: m_LocalPosition.x
       value: 11
@@ -1373,6 +1397,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8239916942377917664, guid: 464823974a6de7e48a8e8678cff61be8, type: 3}
+      propertyPath: m_fontSize
+      value: 3.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8239916942377917664, guid: 464823974a6de7e48a8e8678cff61be8, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 3.4
+      objectReference: {fileID: 0}
     - target: {fileID: 8743172180248939627, guid: 464823974a6de7e48a8e8678cff61be8, type: 3}
       propertyPath: m_Name
       value: VictoryTrigger (1)
@@ -1380,7 +1412,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4982383950665750504, guid: 464823974a6de7e48a8e8678cff61be8, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 464823974a6de7e48a8e8678cff61be8, type: 3}
 --- !u!1 &979456270
 GameObject:
@@ -3174,6 +3209,30 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4982383950665750504, guid: 464823974a6de7e48a8e8678cff61be8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5698733153074820029, guid: 464823974a6de7e48a8e8678cff61be8, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 5698733153074820029, guid: 464823974a6de7e48a8e8678cff61be8, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 5698733153074820029, guid: 464823974a6de7e48a8e8678cff61be8, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5698733153074820029, guid: 464823974a6de7e48a8e8678cff61be8, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5698733153074820029, guid: 464823974a6de7e48a8e8678cff61be8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 90
+      objectReference: {fileID: 0}
     - target: {fileID: 6184776790282128033, guid: 464823974a6de7e48a8e8678cff61be8, type: 3}
       propertyPath: m_LocalPosition.x
       value: -8.5
@@ -3214,6 +3273,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8239916942377917664, guid: 464823974a6de7e48a8e8678cff61be8, type: 3}
+      propertyPath: m_fontSize
+      value: 3.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8239916942377917664, guid: 464823974a6de7e48a8e8678cff61be8, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 3.4
+      objectReference: {fileID: 0}
     - target: {fileID: 8743172180248939627, guid: 464823974a6de7e48a8e8678cff61be8, type: 3}
       propertyPath: m_Name
       value: VictoryTrigger
@@ -3221,7 +3288,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4982383950665750504, guid: 464823974a6de7e48a8e8678cff61be8, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 464823974a6de7e48a8e8678cff61be8, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

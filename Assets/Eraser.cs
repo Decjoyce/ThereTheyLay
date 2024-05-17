@@ -54,7 +54,7 @@ public class Eraser : MonoBehaviour
                 }
             }
 
-            Vector3[] newLRPoints = new Vector3[lineRenderer.positionCount - closestIndex2 - 1];
+            Vector3[] newLRPoints = new Vector3[Mathf.Abs(lineRenderer.positionCount - closestIndex2 - 1)];
             int fakeInt = 0;
             for(int i = closestIndex2 + 1; i < lineRenderer.positionCount; i++)
             {
