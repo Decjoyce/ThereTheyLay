@@ -1156,6 +1156,79 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 723ce05b4de6b9c459cf7bdf55aa12f8, type: 3}
+--- !u!1001 &669962011
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 495015740836315331, guid: 716544f95b27f9749a52caf8975acf8a, type: 3}
+      propertyPath: m_Name
+      value: EmailCollectable
+      objectReference: {fileID: 0}
+    - target: {fileID: 6521988471577835943, guid: 716544f95b27f9749a52caf8975acf8a, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2.24
+      objectReference: {fileID: 0}
+    - target: {fileID: 6521988471577835943, guid: 716544f95b27f9749a52caf8975acf8a, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2.24
+      objectReference: {fileID: 0}
+    - target: {fileID: 6521988471577835943, guid: 716544f95b27f9749a52caf8975acf8a, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2.24
+      objectReference: {fileID: 0}
+    - target: {fileID: 6521988471577835943, guid: 716544f95b27f9749a52caf8975acf8a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.1746027
+      objectReference: {fileID: 0}
+    - target: {fileID: 6521988471577835943, guid: 716544f95b27f9749a52caf8975acf8a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -4.8331513
+      objectReference: {fileID: 0}
+    - target: {fileID: 6521988471577835943, guid: 716544f95b27f9749a52caf8975acf8a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6521988471577835943, guid: 716544f95b27f9749a52caf8975acf8a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6521988471577835943, guid: 716544f95b27f9749a52caf8975acf8a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6521988471577835943, guid: 716544f95b27f9749a52caf8975acf8a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6521988471577835943, guid: 716544f95b27f9749a52caf8975acf8a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6521988471577835943, guid: 716544f95b27f9749a52caf8975acf8a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6521988471577835943, guid: 716544f95b27f9749a52caf8975acf8a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6521988471577835943, guid: 716544f95b27f9749a52caf8975acf8a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6521988471577835943, guid: 716544f95b27f9749a52caf8975acf8a, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 716544f95b27f9749a52caf8975acf8a, type: 3}
 --- !u!1001 &676308271
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1470,6 +1543,10 @@ PrefabInstance:
     - target: {fileID: 3003601975586722320, guid: 1ff9cb6f4a5070d4bb4617574102aeab, type: 3}
       propertyPath: m_Name
       value: Message_Popups
+      objectReference: {fileID: 0}
+    - target: {fileID: 3003601975586722320, guid: 1ff9cb6f4a5070d4bb4617574102aeab, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3914280416874448644, guid: 1ff9cb6f4a5070d4bb4617574102aeab, type: 3}
       propertyPath: m_Camera
@@ -3050,3 +3127,4 @@ SceneRoots:
   - {fileID: 1028786476}
   - {fileID: 642447243}
   - {fileID: 549703034}
+  - {fileID: 669962011}
