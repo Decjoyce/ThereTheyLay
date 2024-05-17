@@ -14,9 +14,10 @@ public class Eraser : MonoBehaviour
 
     Collider2D col;
 
+
     private void Start()
     {
-        papa = transform.parent.GetComponent<Mouse_Draw_Script>();
+            papa = Mouse_Draw_Script.instance;
         col = GetComponent<Collider2D>();
     }
 

@@ -111,8 +111,8 @@ MonoBehaviour:
   inst_MoveJump: 0
   affect_oil: 0
   affect_airbrush: 0
-  player: 0
-  anim: {fileID: 0}
+  useAnims: 1
+  anim: {fileID: 608137333101519182}
   givers_forward: []
   givers_backward: []
   givers_jump: []

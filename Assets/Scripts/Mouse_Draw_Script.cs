@@ -12,6 +12,22 @@ public class Mouse_Draw_Script : MonoBehaviour
     public delegate void OnUnPause();
     public static event OnUnPause onUnPause;
 
+    #region singleton
+    public static Mouse_Draw_Script instance;
+
+    private void Awake()
+    {
+        if (instance != null)
+        {
+            Debug.Log("More than one instance of <b>Mouse_Draw_Script</b>");
+            return;
+        }
+        instance = this;
+    }
+
+    #endregion
+
+
     private LineRenderer lineRenderer;
     private LineRenderer fakeLineRenderer;
     private EdgeCollider2D edgeCollider;
@@ -44,6 +60,8 @@ public class Mouse_Draw_Script : MonoBehaviour
     public Gradient currentColour;
 
     Camera cam;
+
+    public float inkLeft, inkUsed;
 
     private void Start()
     {
@@ -117,7 +135,9 @@ public class Mouse_Draw_Script : MonoBehaviour
                 Vector3 currentPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 currentPos.z = 0f;
 
-                if (Vector3.Distance(previousPos, currentPos) > minDistance)
+                float distanceFromPoints = Vector3.Distance(previousPos, currentPos);
+
+                if (distanceFromPoints > minDistance)
                 {
                     if (previousPos == transform.position)
                     {
@@ -135,6 +155,7 @@ public class Mouse_Draw_Script : MonoBehaviour
                         //edgeCollider.points[edgeCollider.pointCount - 1] = currentPos;
                     }
                     previousPos = currentPos;
+                    inkUsed += distanceFromPoints;
                 }
             }
             else

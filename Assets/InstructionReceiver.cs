@@ -28,7 +28,7 @@ public class InstructionReceiver : MonoBehaviour
     float currentMaxVelocity;
     float currentMoveSpeed;
 
-    [SerializeField] bool player;
+    [SerializeField] bool useAnims;
 
     [SerializeField] Animator anim;
 
@@ -70,7 +70,7 @@ public class InstructionReceiver : MonoBehaviour
     void Update()
     {
         PlayerRotate();
-
+        if(useAnims)
             anim.SetFloat("x_vel", rb.velocity.normalized.x);
     }
 
