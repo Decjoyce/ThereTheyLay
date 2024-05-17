@@ -1807,7 +1807,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6184776790282128033, guid: 464823974a6de7e48a8e8678cff61be8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6184776790282128033, guid: 464823974a6de7e48a8e8678cff61be8, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2393,6 +2393,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   texty: {fileID: 172944533}
   currentLevel: 0
+  gameUnFrozen: 0
 --- !u!4 &1694108983
 Transform:
   m_ObjectHideFlags: 0
