@@ -22,6 +22,7 @@ public class Email_System : MonoBehaviour
 
     [SerializeField] private GameObject EmailScreen;
     [SerializeField] private GameObject EmailButton;
+    [TextArea(3, 10)]
     [SerializeField] private string Email;
     [SerializeField] private string Subject;
     [SerializeField] private TextMeshProUGUI text;

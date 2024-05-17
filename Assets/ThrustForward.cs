@@ -12,6 +12,13 @@ public class ThrustForward : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        if (GameManager.instance.gameUnFrozen)
+        {            
+            rb.constraints = RigidbodyConstraints2D.None;
+            rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+            rb.AddForce(force, ForceMode2D.Impulse);
+        }
+
     }
 
     private void OnEnable()

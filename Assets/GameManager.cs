@@ -25,6 +25,8 @@ public class GameManager : MonoBehaviour
 
     public int currentLevel;
 
+    public bool gameUnFrozen;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -38,6 +40,21 @@ public class GameManager : MonoBehaviour
         {
             texty.text = "Press R To Reset";
         }
+    }
+
+    private void OnEnable()
+    {
+        Mouse_Draw_Script.onUnPause += UnFreeze;
+    }
+
+    private void OnDisable()
+    {
+        Mouse_Draw_Script.onUnPause -= UnFreeze;
+    }
+
+    public void UnFreeze()
+    {
+        gameUnFrozen = true;
     }
 
     public void BeginWin()

@@ -454,6 +454,26 @@ public class Mouse_Draw_Script : MonoBehaviour
         CheckCursor();
     }
 
+    public void GetMaterial(int id)
+    {
+        switch (id)
+        {
+            case 0:
+                currentMaterial = brushStuff.pen_material;
+                break;
+            case 1:
+                currentMaterial = brushStuff.oil_material;
+                break;
+            case 2:
+                currentMaterial = brushStuff.airbrush_material;
+                break;
+            default:
+                Debug.LogError("INVALID PEN ID");
+                break;
+        }
+        CheckCursor();
+    }
+
     public void SwitchColour(string id)
     {
         switch (id)

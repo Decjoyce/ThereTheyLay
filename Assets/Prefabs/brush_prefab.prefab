@@ -193,6 +193,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   brushType: 0
   instructionType: 0
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!1 &7454808628027787799
 GameObject:
   m_ObjectHideFlags: 0

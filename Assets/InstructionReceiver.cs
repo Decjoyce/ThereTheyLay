@@ -40,6 +40,8 @@ public class InstructionReceiver : MonoBehaviour
     public List<InstructionGiver> givers_oil = new List<InstructionGiver>();
     public List<InstructionGiver> givers_air = new List<InstructionGiver>();
 
+    float oggrav;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -47,6 +49,7 @@ public class InstructionReceiver : MonoBehaviour
         startingDrag = rb.drag;
         currentMaxVelocity = maxVelocity;
         currentMoveSpeed = moveSpeed;
+        oggrav = rb.gravityScale;
     }
 
     private void OnEnable()
@@ -72,6 +75,29 @@ public class InstructionReceiver : MonoBehaviour
         PlayerRotate();
         if(useAnims)
             anim.SetFloat("x_vel", rb.velocity.normalized.x);
+
+        if (givers_air.Count > 0)
+        {
+            current_airbrush_slowness = airbrush_slowness;
+            rb.gravityScale = oggrav * airbrush_slowness;
+        }
+        else
+        {
+            current_airbrush_slowness = 1;
+            rb.gravityScale = oggrav;
+        }
+
+
+        if (givers_oil.Count > 0)
+        {
+            currentMaxVelocity = Mathf.Infinity;
+            currentMoveSpeed = moveSpeed / 2;
+        }
+        else
+        {
+            currentMaxVelocity = maxVelocity;
+            currentMoveSpeed = moveSpeed;
+        }
     }
 
     private void FixedUpdate()
@@ -91,23 +117,6 @@ public class InstructionReceiver : MonoBehaviour
         if(isActive && givers_jump.Count > 0)
         {
             rb.AddForce(Vector2.up * jumpForce * current_airbrush_slowness, ForceMode2D.Impulse);
-        }
-
-
-        if (givers_air.Count > 0)
-            current_airbrush_slowness = airbrush_slowness;
-        else
-            current_airbrush_slowness = 1;
-
-        if (givers_oil.Count > 0)
-        {
-            currentMaxVelocity = Mathf.Infinity;
-            currentMoveSpeed = moveSpeed / 2;
-        }
-        else
-        {
-            currentMaxVelocity = maxVelocity;
-            currentMoveSpeed = moveSpeed;
         }
 
     }

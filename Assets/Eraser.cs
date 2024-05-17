@@ -95,6 +95,8 @@ public class Eraser : MonoBehaviour
 
             newlineRenderer.colorGradient = lineRenderer.colorGradient;
 
+            newlineRenderer.material = lineRenderer.material;
+
             EdgeCollider2D newEdgeCollider = newLine.GetComponent<EdgeCollider2D>();
 
             newlineRenderer.positionCount = newLRPoints.Length;
