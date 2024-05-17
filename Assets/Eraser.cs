@@ -75,7 +75,7 @@ public class Eraser : MonoBehaviour
                 fakeLineRenderer.positionCount = closestIndex1;
             }
 
-            edgeCollider.edgeRadius = papa.width / 2f;
+            edgeCollider.edgeRadius = lineRenderer.startWidth / 2f;
             for (int i = 0; i < lineRenderer.positionCount; i++)
             {
                 Vector3 convertedPos = lineRenderer.GetPosition(i);
@@ -90,9 +90,10 @@ public class Eraser : MonoBehaviour
             giver.instructionType = inst_giver.instructionType;
 
             LineRenderer[] newRenderers = newLine.GetComponentsInChildren<LineRenderer>();
-            renderers[0].colorGradient = lineRenderer.colorGradient;
             LineRenderer newlineRenderer = newRenderers[0];
             LineRenderer newfakeLineRenderer = newRenderers[1];
+
+            newlineRenderer.colorGradient = lineRenderer.colorGradient;
 
             EdgeCollider2D newEdgeCollider = newLine.GetComponent<EdgeCollider2D>();
 
@@ -105,7 +106,7 @@ public class Eraser : MonoBehaviour
 
             newfakeLineRenderer.Simplify(0.1f);
 
-            newEdgeCollider.edgeRadius = papa.width / 2f;
+            newEdgeCollider.edgeRadius = lineRenderer.startWidth / 2f;
             for (int i = 0; i < newfakeLineRenderer.positionCount; i++)
             {
                 Vector3 convertedPos = newfakeLineRenderer.GetPosition(i);
