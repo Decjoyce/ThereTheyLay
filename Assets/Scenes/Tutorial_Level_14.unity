@@ -596,8 +596,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EmailScreen: {fileID: 1028786477}
   EmailButton: {fileID: 676308273}
-  Email: Finally you caved in and got yourself a computer. Now I can annoy you all
-    day :)
+  Email: Hey listen I'm out all day and I need you to buy some things for me can
+    you do that. What I need is a ***, role of ******** and a ******.
   Subject: Moving out?
   text: {fileID: 1028786479}
   subjecttext: {fileID: 1028786478}
@@ -2814,6 +2814,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   texty: {fileID: 172944533}
   currentLevel: 0
+  gameUnFrozen: 0
 --- !u!4 &1694108983
 Transform:
   m_ObjectHideFlags: 0

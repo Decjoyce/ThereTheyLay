@@ -5,15 +5,6 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/Scenes/SampleScene.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
-  - enabled: 0
-    path: Assets/Scenes/Deco_Scene.unity
-    guid: 64103c2d6544d634da3d0f98b5fa5bc3
-  - enabled: 0
-    path: Assets/Scenes/Main_Menu.unity
-    guid: 80da66e2cc47e0c4db5350e0bb07d25b
   - enabled: 1
     path: Assets/Scenes/Main_MenuWindows.unity
     guid: 52c23e9aa72e3ee4c8d601f3b58cd0f1
@@ -49,7 +40,7 @@ EditorBuildSettings:
     guid: 0938927407b0e33418e2d3ebd914a353
   - enabled: 1
     path: Assets/Scenes/Tutorial_Level_11.unity
-    guid: c695be3c77b2fe24888b127e8552aa43
+    guid: b6a45dd23d8138344935883330841c3a
   - enabled: 1
     path: Assets/Scenes/Tutorial_Level_12.unity
     guid: f7b341f556ba1be4da55b0fe97383910
@@ -62,4 +53,19 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Tutorial_Level_15.unity
     guid: 4f60193a15de9974d83ab2d5d82d61dd
+  - enabled: 1
+    path: Assets/Scenes/Tutorial_Level_16.unity
+    guid: 86c825c235726844dae93485a18f6588
+  - enabled: 1
+    path: Assets/Scenes/Tutorial_Level_17.unity
+    guid: ef86e451edc6542449c103f6518638b6
+  - enabled: 1
+    path: Assets/Scenes/Tutorial_Level_18.unity
+    guid: 31039d47a8fa60a49857f576ed600f1b
+  - enabled: 1
+    path: Assets/Scenes/Tutorial_Level_19.unity
+    guid: e8a2f3697932d6d4ca378f673e4faa4c
+  - enabled: 1
+    path: Assets/Scenes/Tutorial_Level_20.unity
+    guid: 155db40a380bf2a4693fdc53e28cbaf7
   m_configObjects: {}

@@ -1223,8 +1223,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EmailScreen: {fileID: 313252892}
   EmailButton: {fileID: 1305035524}
-  Email: Dear Friend I know what you did this is the last time I'll speak to you.
-    Goodbye.
+  Email: Dear Sir/Mam, have you ever heard of Superman. If so I want you to know
+    your nothing like him.
   Subject: Goodbye
   text: {fileID: 313252894}
   subjecttext: {fileID: 313252893}
@@ -2918,6 +2918,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   texty: {fileID: 172944533}
   currentLevel: 0
+  gameUnFrozen: 0
 --- !u!4 &1694108983
 Transform:
   m_ObjectHideFlags: 0

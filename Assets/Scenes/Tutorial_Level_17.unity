@@ -830,8 +830,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EmailScreen: {fileID: 532242506}
   EmailButton: {fileID: 1113277790}
-  Email: Finally you caved in and got yourself a computer. Now I can annoy you all
-    day :)
+  Email: Hey man, its been a while I know, I just wanted to let you know your on
+    the news!!!
   Subject: Finally
   text: {fileID: 1531770100}
   subjecttext: {fileID: 633741064}

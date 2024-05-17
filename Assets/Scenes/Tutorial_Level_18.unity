@@ -829,8 +829,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EmailScreen: {fileID: 532242506}
   EmailButton: {fileID: 1113277790}
-  Email: Finally you caved in and got yourself a computer. Now I can annoy you all
-    day :)
+  Email: Dear Friend I know what you did this is the last time I'll speak to you.
+    Goodbye.
   Subject: Finally
   text: {fileID: 1531770100}
   subjecttext: {fileID: 633741064}
@@ -3454,7 +3454,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8099893865869788599, guid: 723ce05b4de6b9c459cf7bdf55aa12f8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -8.5
+      value: -9.23
       objectReference: {fileID: 0}
     - target: {fileID: 8099893865869788599, guid: 723ce05b4de6b9c459cf7bdf55aa12f8, type: 3}
       propertyPath: m_LocalPosition.y

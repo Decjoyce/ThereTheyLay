@@ -841,8 +841,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EmailScreen: {fileID: 455723380}
   EmailButton: {fileID: 1897615203}
-  Email: Hey man, its been a while I know, I just wanted to let you know your on
-    the news!!!
+  Email: Finally you caved in and got yourself a computer. Now I can annoy you all
+    day :)
   Subject: The News
   text: {fileID: 455723382}
   subjecttext: {fileID: 455723381}
@@ -2630,6 +2630,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   texty: {fileID: 172944533}
   currentLevel: 0
+  gameUnFrozen: 0
 --- !u!4 &1694108983
 Transform:
   m_ObjectHideFlags: 0
