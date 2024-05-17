@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 public class Mouse_Draw_Script : MonoBehaviour
 {
@@ -62,6 +63,8 @@ public class Mouse_Draw_Script : MonoBehaviour
     Camera cam;
 
     public float inkLeft, inkUsed;
+
+    [SerializeField] Image playButton;
 
     private void Start()
     {
@@ -209,7 +212,7 @@ public class Mouse_Draw_Script : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            onUnPause.Invoke();
+            UnPauseGame();
         }
 
     }
@@ -217,6 +220,7 @@ public class Mouse_Draw_Script : MonoBehaviour
     public void UnPauseGame()
     {
         onUnPause.Invoke();
+        playButton.color = new Color(0, 0.65f, 1f);
     }
 
     void BeginDraw()

@@ -14,11 +14,13 @@ public class Eraser : MonoBehaviour
 
     Collider2D col;
 
+    [SerializeField] float delay;
 
     private void Start()
     {
             papa = Mouse_Draw_Script.instance;
         col = GetComponent<Collider2D>();
+        StartCoroutine(CollisionToggleOnAndOff());
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -116,6 +118,15 @@ public class Eraser : MonoBehaviour
                 Destroy(lineRenderer.gameObject);
             if (newlineRenderer.positionCount <= 1)
                 Destroy(newlineRenderer.gameObject);
+        }
+    }
+
+    IEnumerator CollisionToggleOnAndOff()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(delay);
+            col.enabled = !col.enabled;
         }
     }
 
