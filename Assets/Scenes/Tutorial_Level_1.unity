@@ -822,15 +822,16 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 314266668}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 875b538c5eda58947b588e8d4570968f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   EmailScreen: {fileID: 532242506}
   EmailButton: {fileID: 1113277790}
-  Email: Yo sup time to kill some peeps!!!
-  Subject: Bobs Life?
+  Email: Finally you caved in and got yourself a computer. Now I can annoy you all
+    day :)
+  Subject: Finally
   text: {fileID: 1531770100}
   subjecttext: {fileID: 633741064}
   NotificationSound: {fileID: 182507704}
@@ -2590,6 +2591,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 314266672}
     m_Modifications:
+    - target: {fileID: 1873388263230055730, guid: 290b2599ccdd0e94499af8e0436948c9, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: fcfbb6c0c14797b448d3beb3eb82dbef, type: 2}
+    - target: {fileID: 1873388263230055730, guid: 290b2599ccdd0e94499af8e0436948c9, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6838701163238948518, guid: 290b2599ccdd0e94499af8e0436948c9, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -2996,7 +3005,7 @@ PrefabInstance:
       objectReference: {fileID: 314266673}
     - target: {fileID: 8316600893593432115, guid: 1ff9cb6f4a5070d4bb4617574102aeab, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
